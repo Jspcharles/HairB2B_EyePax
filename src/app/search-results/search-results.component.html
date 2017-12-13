@@ -1,0 +1,39 @@
+<div class="container">
+  <div>
+    <h1>Search results</h1>
+    <h2 class="lead"><strong class="text-danger">5</strong> Results were found for the search of <strong class="text-danger">Hairstlists</strong></h2>
+    <hr>
+  </div>
+  <section class="col-xs-12 col-sm-6 col-md-12">
+    <article class="search-result row">
+      <div class="col-xs-12 col-sm-12 col-md-3">
+        <a href="" title="Lorem ipsum" class="thumbnail">
+          <img src="../../assets/images/profile_img.png" alt="Lorem ipsum" /></a>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2">
+        <ul class="meta-search" style="font-size: 20px"><br>
+          <li><i class="glyphicon glyphicon-usd"></i> <span>{{usd}}</span><span> Day</span></li>
+          <li><i class="glyphicon glyphicon-home"></i><span>{{country}}</span></li>
+        </ul>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+        <h3><a href="#" title="">{{name}}</a></h3>
+        <p>Claire Mason the colour Queen of Perth. Claire and her hand selected and exceptionally trained team have built a solid reputation and social media presence
+          by the amazing colour trends.</p>
+        <span><strong>Specialized in</strong></span><br>
+        <span class="label label-warning">Advanced colour</span>
+        <span class="label label-info">Colour correction</span>
+        <span class="label label-success">Hair painting</span>
+        <div>
+        <button type="button" class="btn btn-default" routerLink="/hairstylist-pro" [queryParams]="{'usd':usd, 'count' :country, 'name' :name}">View Profile</button>
+        </div>
+      </div>
+    </article>
+  </section>
+</div>
+<app-footer></app-footer>

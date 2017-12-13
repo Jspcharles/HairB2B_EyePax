@@ -1,0 +1,28 @@
+.bg-head{
+  background-color: black;
+  height: 100px;
+  width: 100%;
+}
+
+.list{
+  padding-bottom: 10px;
+
+}
+
+.li-clr{
+  color: white;
+  text-decoration: none;
+  size: 14px;
+}
+
+.navbar {
+  background-color: transparent;
+  color: #DDBE42;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+
+.myButton {
+  background-color:#44c767;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  display:inline-block;
+  cursor:pointer;
+
+  font-family:Arial;
+  font-size:18px;
+  padding:10px 47px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #2f6627;
+}
+.myButton:hover {
+  background-color:#5cbf2a;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+.li-clr-sign-up:hover{
+  text-decoration: none;
+}
+
+p{
+  size: auto;
+}
+
+.li-clr{
+  color: black;
+  text-decoration: none;
+  size: 14px;
+}
+
+.bg-log{
+  background-color: transparent;
+}
+
+.input-feild{
+  border: 1px solid #ccc;
+}
+
+
