@@ -26,6 +26,7 @@
     "ionic2-calendar": "^0.3.13-weekdayview-tpls",
     "moment": "^2.19.4",
     "ng-click-outside": "^3.1.1",
+    "ng2-carouselamos": "^3.2.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },

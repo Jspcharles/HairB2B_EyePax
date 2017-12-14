@@ -70,34 +70,7 @@
   margin-bottom:25px;
 
 }
-.site-btn {
-  background-color: #d2413f;
-  height: 55px;
-  line-height: 55px;
-  border: none;
-  padding: 0 55px 0 50px;
-  border-radius: 3px;
-  color: #ffffff;
 
-}
-.site-btn2 {
-  border: 2px solid #fff;
-  padding:15px;
-  border-radius: 100px;
-  background-color: #e5e5e5;
-  width: 190px;
-  letter-spacing: 2px;
-}
-
-.site-btn:hover {
-  background-color: #cb202d;
-  height: 55px;
-  line-height: 55px;
-  border: none;
-  padding: 0 55px 0 50px;
-  border-radius: 3px;
-  color: #ffffff;
-}
 /* Span Text Class */
 .p-color {
   color: #e53031;
@@ -135,19 +108,12 @@ input{
   border: 1px solid #d2413f;;
 }
 
-button{
- height: 50px;
-  width: 200px;
-  border-radius:5px 5px 5px 5px;
-}
-
 .label{
   font-size: 40px;
 }
 
-.background-cover{
-  background: rgba(0,0,0,.8);
+.pr-hero-black-holder {
+  background: rgba(0,0,0,.6);
 }
-
 
 

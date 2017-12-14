@@ -1,8 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ClickOutsideModule} from 'ng-click-outside';
-
-
 import {AppComponent} from './app.component';
 import {SliderComponent} from './slider/slider.component';
 import {HeaderComponent} from './header/header.component';
@@ -18,6 +16,8 @@ import { APP_BASE_HREF } from '@angular/common';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HairstylistProfileComponent } from './hairstylist-profile/hairstylist-profile.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import {Ng2CarouselamosModule} from 'ng2-carouselamos';
+import { TestAlComponent } from './test-al/test-al.component';
 
 
 const routes: Routes = [
@@ -46,11 +46,13 @@ const routes: Routes = [
     SearchResultsComponent,
     SignUpComponent,
     HairstylistProfileComponent,
-    CalendarComponent
+    CalendarComponent,
+    TestAlComponent,
   ],
   imports: [
     BrowserModule, ClickOutsideModule,
-     RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    Ng2CarouselamosModule
   ],
   providers: [ { provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
