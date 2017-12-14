@@ -1,27 +1,37 @@
-
 <div class="container">
   <div class="row panel">
-    <div class="col-md-4 bg_blur ">
-      <a href="#" class="follow_btn hidden-xs">Follow</a>
-    </div>
-    <div class="col-md-8  col-xs-12">
+    <div class="col-md-20  col-xs-12">
       <img src="../../assets/images/profile_img.png" class="img-thumbnail picture hidden-xs" />
       <img src="" class="img-thumbnail visible-xs picture_mob" />
       <div class="header">
         <h1>{{name}}</h1>
-        <h4>Web Developer</h4>
-        <span>Claire Mason the colour Queen of Perth. Claire and her hand selected and exceptionally trained team have built a solid reputation and social media presence
-          by the amazing colour trends.</span>
+        <div>
+          <span><strong>Specialized in</strong></span><br>
+          <span class="label label-warning">Advanced colour</span>
+          <span class="label label-info">Colour correction</span>
+          <span class="label label-success">Hair painting</span>
+        </div>
+        <span>Claire Mason the colour Queen of Perth, owner of East Fremantle's leading Hair Lounge - Eighty One on George.
+          Claire and her hand selected and exceptionally trained team have built a solid reputation and social media presence
+          by the amazing colour trends, crazy colours they create daily and the ongoing motivation they share! Claire is an advocate
+          for young aspiring business owners and shares her wealth of knowledge and struggles she has over come being in business from age of 21.
+        </span>
       </div>
     </div>
   </div>
 
   <div class="row nav">
-    <div class="col-md-4"></div>
-    <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
-      <div class="col-md-4 col-xs-4 well">$ {{usd}}</div>
-      <div class="col-md-4 col-xs-4 well">{{count}}</div>
-      <div class="col-md-4 col-xs-4 well"> 26</div>
+    <div class="col-md-8 col-xs-12">
+      <div class="col-md-4 col-xs-4 well"><i class="glyphicon glyphicon-usd"></i> <strong>{{usd}}</strong></div>
+      <div class="col-md-4 col-xs-4 well"><i class="glyphicon glyphicon-home"></i>  {{count}}</div>
+      <div class="col-md-4 col-xs-4 well">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+      </div>
     </div>
   </div>
 </div>
+

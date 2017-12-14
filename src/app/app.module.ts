@@ -17,6 +17,7 @@ import {RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HairstylistProfileComponent } from './hairstylist-profile/hairstylist-profile.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
     HomePageContentComponent,
     SearchResultsComponent,
     SignUpComponent,
-    HairstylistProfileComponent
+    HairstylistProfileComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule, ClickOutsideModule,

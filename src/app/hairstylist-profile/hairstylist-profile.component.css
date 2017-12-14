@@ -1,27 +1,10 @@
-*{
-  font-family: 'Open Sans', sans-serif;
-}
+
 
 .well {
-  margin-top:-20px;
-  border:2px solid #0077B2;
+  margin-top:-5px;
   text-align:center;
   cursor:pointer;
   font-size: 25px;
-  padding: 15px;
-  border-radius: 0px !important;
-}
-
-.well:hover {
-  margin-top:-20px;
-  background-color:#0077B2;
-  border:2px solid #0077B2;
-  text-align:center;
-  cursor:pointer;
-  font-size: 25px;
-  padding: 15px;
-  border-radius: 0px !important;
-  border-bottom : 2px solid rgba(97, 203, 255, 0.65);
 }
 
 body {
@@ -79,11 +62,11 @@ body {
 }
 
 .picture{
-  height:150px;
-  width:150px;
+  height:200px;
+  width:200px;
   position:absolute;
-  top: 75px;
-  left:-75px;
+  top: 80px;
+  left:-100px;
 }
 
 .picture_mob{
@@ -119,5 +102,9 @@ body {
   .nav{
     margin-top : 30px;
   }
+}
+
+.checked {
+  color: orange;
 }
 

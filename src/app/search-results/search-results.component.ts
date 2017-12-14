@@ -9,7 +9,8 @@ export class SearchResultsComponent implements OnInit {
   name = 'George Maxwell';
   usd = 255;
   country = 'Sydney';
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
