@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 export class HairstylistProfileComponent implements OnInit {
   name;
   usd;
-  count;
+  county;
   constructor(private  route: ActivatedRoute) {
 
   }
@@ -20,7 +20,7 @@ export class HairstylistProfileComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.usd = params['usd'] || 0;
-        this.count = params['count'] || 0;
+        this.county = params['count'] || 0;
         this.name = params['name'] || 0;
       });
   }

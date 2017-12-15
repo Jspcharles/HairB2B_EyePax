@@ -1,0 +1,70 @@
+.w3-button{display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;
+border:1px solid #111111;
+border-radius: 2px;
+}
+
+.w3-button:hover{
+  background-color: #111111;
+}
+
+.w3-button:focus {
+  background: #e8500e;
+}
+
+.slot{
+  padding-top: 50px;
+}
+
+.slot-width{
+  width: 200px;
+}
+
+.pr-cal-guide-boxes{text-align:left;}
+
+td{
+  width: 30px;
+}
+
+.b1{
+  color: #c33c3a;
+}
+
+.b2{
+  color: #2f6627;
+}
+
+.pr-cal-box .pr-cal-heading {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: -8px;
+  background-color: #545150;
+  color: #fff;
+}
+
+.pr-cal-box .panel-heading {
+  height: auto;
+  padding-bottom: 22px;
+  padding-top: 24px;
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.w3-width{
+  width: 200px;
+  border: 1px solid #ff8500;
+}
+
+.w3-button-slot{
+  display:inline-block;outline:0;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;
+  border:1px solid #111111;
+  border-radius: 2px;
+}
+
+.w3-button-slot:hover{
+  background-color: #111111;
+}

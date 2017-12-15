@@ -5,20 +5,25 @@
         <div class="">
           <div class="row">
             <div class="col-md-12">
-              <h2 class="pr-h2-tag">Please choose your sessions</h2>
+              <h2 class="pr-h2-tag">Choose your sessions</h2>
             </div>
           </div>
-          <div class="pr-cal-guide-boxes">
-            <div class="pr-cal-guide">
-              <div class="pr-cal-guide-color-box pr-cal-guide-color-box-busy">
-              </div>
-              <p>Busy</p>
-              <div class="pr-cal-guide-color-box pr-cal-guide-color-box-selected">
-              </div>
-              <p>Selected</p>
-              <div class="pr-cal-guide-color-box pr-cal-guide-color-box-available">
-              </div>
-              <p>Available</p>
+          <div class="pr-cal-guide-boxes container">
+            <div class="">
+              <table>
+                <tr>
+                  <td><i class="fa fa-square b1" aria-hidden="true"></i></td>
+                  <td><p>Busy</p></td>
+                </tr>
+                <tr>
+                  <td><i class="fa fa-square b2" aria-hidden="true"></i></td>
+                  <td><p>Selected</p></td>
+                </tr>
+                <tr>
+                  <td><i class="fa fa-square b3" aria-hidden="true"></i></td>
+                  <td><p>Available</p></td>
+                </tr>
+              </table>
             </div>
           </div>
           <div class="pr-cal-box panel panel-default text-center">
@@ -41,16 +46,20 @@
                   <div class="pr-cal-dates">
                     <div class="pr-cal-date">
                       <ng-template let-item let-i="index" #item>
-                        <div style="min-width: 200px" class="items">
-                      <span class="pr-day pr-month">
-                        {{item.month}}<br>
-                      </span>
-                          <span class="pr-date">
-                        {{item.date}}<br>
-                      </span>
-                          <span class="pr-day">
-                        {{item.day}}<br>
-                      </span>
+                        <div style="min-width: 200px;" class="items" *ngFor="let date of day">
+                          <div>
+                            <button class="w3-button" (click)="toggleShow()">
+                              <span class="pr-day pr-month">
+                                {{date.format('MMMM')}}<br>
+                              </span>
+                                  <span class="pr-date">
+                                {{date.format('D')}}<br>
+                              </span>
+                                  <span class="pr-day">
+                                {{date.format('dddd')}}<br>
+                              </span>
+                          </button>
+                          </div>
                         </div>
                       </ng-template>
                     </div>
@@ -61,10 +70,15 @@
                     <i class="fa fa-caret-right"></i>
                   </button>
                 </ng-template>
-
               </div>
-              <div class="panel-body pr-cal-body"></div>
-              <div class="panel-footer pr-cal-footer pr-dynamic-cal-footer"></div>
+              <div class="panel-body pr-cal-body">
+                <div class="container slot toggle-panel" *ngIf="show">
+                  <div><button type="button" class="w3-button-slot w3-width">8PM - 12PM</button></div>
+                  <br>
+                  <div><button type="button" class="w3-button-slot w3-width">1PM - 5PM</button></div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
