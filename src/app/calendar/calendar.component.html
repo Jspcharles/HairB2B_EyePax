@@ -49,6 +49,8 @@
                         <div style="min-width: 200px;" class="items" *ngFor="let date of day">
                           <div>
                             <button class="w3-button" (click)="toggleShow()">
+                              <div *ngIf="showSlot1"><i class="fa fa-check" aria-hidden="true"></i></div>
+                              <div *ngIf="showSlot2"><i class="fa fa-check" aria-hidden="true"></i></div>
                               <span class="pr-day pr-month">
                                 {{date.format('MMMM')}}<br>
                               </span>
@@ -73,9 +75,9 @@
               </div>
               <div class="panel-body pr-cal-body">
                 <div class="container slot toggle-panel" *ngIf="show">
-                  <div><button type="button" class="w3-button-slot w3-width">8PM - 12PM</button></div>
+                  <div><button type="button" class="w3-button-slot w3-width" (click)="slotShow1()">8PM - 12PM</button></div>
                   <br>
-                  <div><button type="button" class="w3-button-slot w3-width">1PM - 5PM</button></div>
+                  <div><button type="button" class="w3-button-slot w3-width" (click)="slotShow2()">1PM - 5PM</button></div>
                 </div>
               </div>
 

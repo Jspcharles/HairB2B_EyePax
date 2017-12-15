@@ -8,9 +8,17 @@ import * as moment from 'moment';
 })
 export class CalendarComponent implements OnInit {
   show = false;
+  showSlot1 = false;
+  showSlot2 = false;
 
   toggleShow() {
     this.show = !this.show;
+  }
+  slotShow1() {
+    this.showSlot1 = !this.showSlot1;
+  }
+  slotShow2() {
+    this.showSlot2 = !this.showSlot2;
   }
 
   items: Date[];
