@@ -10,6 +10,8 @@ export class HairstylistProfileComponent implements OnInit {
   name;
   usd;
   county;
+
+  items: Array<any> = [];
   constructor(private  route: ActivatedRoute) {
 
   }

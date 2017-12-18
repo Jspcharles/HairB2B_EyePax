@@ -8,7 +8,7 @@ border-radius: 2px;
 }
 
 .w3-button:focus {
-  background: #e8500e;
+  background: #2f6627;
 }
 
 .slot{
@@ -67,4 +67,19 @@ td{
 
 .w3-button-slot:hover{
   background-color: #111111;
+}
+
+.btn-clicked{
+  background-color: #2f6627;
+}
+
+.w3-width-book-slot{
+  padding:1px 10px;color:inherit;text-align:center;
+  border:1px solid #FFFFFF;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
+.btn-NotAvailable{
+  background-color: #c33c3a;
 }

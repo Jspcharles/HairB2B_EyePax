@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
+import _date = moment.unitOfTime._date;
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-calendar',
@@ -7,187 +9,69 @@ import * as moment from 'moment';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+
+  day: any[] = [];
   show = false;
-  showSlot1 = false;
-  showSlot2 = false;
+  disDate: any[];
+  // acer;
 
-  toggleShow() {
+  days__: Day[] = [];
+
+  selectedDate: any;
+
+  toggleShow(date) {
     this.show = !this.show;
-  }
-  slotShow1() {
-    this.showSlot1 = !this.showSlot1;
-  }
-  slotShow2() {
-    this.showSlot2 = !this.showSlot2;
+
+    this.selectedDate = date;
   }
 
-  items: Date[];
-  public day: any[] = [];
+  slotShow1(date) {
+    const d = this.days__.find(value => {
+      if (value.date === date.date) {
+        return true;
+      }
+      return false;
+    });
+    d.showSlot1 = !d.showSlot1;
+  }
+
+  slotShow2(date) {
+    const d = this.days__.find(value => {
+      if (value.date === date.date) {
+        return true;
+      }
+      return false;
+    });
+    d.showSlot2 = !d.showSlot2;
+  }
+
+  // showNotAvaDate(){
+  //     for (let i = 0;i<30;i++){
+  //       if (this.day === this.disDate[i]){
+  //         return true;
+  //       }
+  //     }
+  // }
 
   constructor() {
+
+    // this.disDate = ['20','55'];
+
+    // for (let i =0; i<30; i++){
+    //   if (this.day[i] === '20'){
+    //     this.acer = true;
+    //   }
+    //   return this.acer;
+    // }
   }
 
   ngOnInit() {
 
-    for (let i = 0; i < 14; i++){
+    for (let i = 0; i < 14; i++) {
       this.day[i] = this.getDate(i);
+      this.days__.push({date: this.day[i], showSlot1: false, showSlot2: false});
     }
 
-    this.items = [
-      {
-        day: 'Sun',
-        month: 'Dec',
-        date: '01'
-      },
-      {
-        day: 'Sat',
-        month: 'Dec',
-        date: '02'
-      },
-      {
-        day: 'Sun',
-        month: 'Dec',
-        date: '03'
-      },
-      {
-        day: 'Mon',
-        month: 'Dec',
-        date: '04'
-      },
-      {
-        day: 'Tue',
-        month: 'Dec',
-        date: '05'
-      },
-      {
-        day: 'Wed',
-        month: 'Dec',
-        date: '06'
-      },
-      {
-        day: 'Thu',
-        month: 'Dec',
-        date: '07'
-      },
-      {
-        day: 'Fri',
-        month: 'Dec',
-        date: '08'
-      },
-      {
-        day: 'Sat',
-        month: 'Dec',
-        date: '09'
-      },
-      {
-        day: 'Sun',
-        month: 'Dec',
-        date: '10'
-      },
-      {
-        day: 'Mon',
-        month: 'Dec',
-        date: '11'
-      },
-      {
-        day: 'Tue',
-        month: 'Dec',
-        date: '12'
-      },
-      {
-        day: 'Wed',
-        month: 'Dec',
-        date: '13'
-      },
-      {
-        day: 'Thu',
-        month: 'Dec',
-        date: '14'
-      },{
-        day: 'Fri',
-        month: 'Dec',
-        date: '15'
-      },
-      {
-        day: 'Sat',
-        month: 'Dec',
-        date: '16'
-      },
-      {
-        day: 'Sun',
-        month: 'Dec',
-        date: '17'
-      },
-      {
-        day: 'Mon',
-        month: 'Dec',
-        date: '18'
-      },
-      {
-        day: 'Tue',
-        month: 'Dec',
-        date: '19'
-      },
-      {
-        day: 'Wed',
-        month: 'Dec',
-        date: '20'
-      },
-      {
-        day: 'Thu',
-        month: 'Dec',
-        date: '21'
-      },{
-        day: 'Fri',
-        month: 'Dec',
-        date: '22'
-      },
-      {
-        day: 'Sat',
-        month: 'Dec',
-        date: '23'
-      },
-      {
-        day: 'Sun',
-        month: 'Dec',
-        date: '24'
-      },
-      {
-        day: 'Mon',
-        month: 'Dec',
-        date: '25'
-      },
-      {
-        day: 'Tue',
-        month: 'Dec',
-        date: '26'
-      },
-      {
-        day: 'Wed',
-        month: 'Dec',
-        date: '27'
-      },
-      {
-        day: 'Thu',
-        month: 'Dec',
-        date: '28'
-      },
-      {
-        day: 'Fri',
-        month: 'Dec',
-        date: '29'
-      },
-      {
-        day: 'Sat',
-        month: 'Dec',
-        date: '30'
-      },
-      {
-        day: 'Sun',
-        month: 'Dec',
-        date: '31'
-      }
-    ];
   }
 
   getDate(num) {
@@ -200,4 +84,10 @@ interface Date {
   day: string;
   month: string;
   date: string;
+}
+
+interface Day {
+  date: any;
+  showSlot1: boolean;
+  showSlot2: boolean;
 }

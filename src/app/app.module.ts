@@ -18,6 +18,7 @@ import { HairstylistProfileComponent } from './hairstylist-profile/hairstylist-p
 import { CalendarComponent } from './calendar/calendar.component';
 import {Ng2CarouselamosModule} from 'ng2-carouselamos';
 import { TestAlComponent } from './test-al/test-al.component';
+import { BookingShowsComponent } from './booking-shows/booking-shows.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
     HairstylistProfileComponent,
     CalendarComponent,
     TestAlComponent,
+    BookingShowsComponent,
   ],
   imports: [
     BrowserModule, ClickOutsideModule,
