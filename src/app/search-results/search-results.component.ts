@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-search-results',
@@ -7,12 +8,19 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  name = 'George Maxwell';
-  usd = 255;
-  country = 'Sydney';
+  name;
+  address;
   need;
+  cost;
 
-  constructor(private  route: ActivatedRoute) {
+  constructor(private  route: ActivatedRoute, private http: HttpClient) {
+    this.http.get<Stylist>('/api/stylist/getsamplestylist').subscribe(
+      data => {
+        this.name = data.name;
+        this.address = data.address;
+        this.cost = data.cost;
+      }
+    );
   }
 
   ngOnInit() {
@@ -23,4 +31,10 @@ export class SearchResultsComponent implements OnInit {
         this.need = params['need'] || 0;
       });
   }
+}
+
+interface Stylist {
+  name: string;
+  address: string;
+  cost: number;
 }

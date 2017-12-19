@@ -19,6 +19,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 import {Ng2CarouselamosModule} from 'ng2-carouselamos';
 import { TestAlComponent } from './test-al/test-al.component';
 import { BookingShowsComponent } from './booking-shows/booking-shows.component';
+import { HairstylistProfilePicsComponent } from './hairstylist-profile-pics/hairstylist-profile-pics.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -50,11 +52,13 @@ const routes: Routes = [
     CalendarComponent,
     TestAlComponent,
     BookingShowsComponent,
+    HairstylistProfilePicsComponent,
   ],
   imports: [
     BrowserModule, ClickOutsideModule,
     RouterModule.forRoot(routes),
-    Ng2CarouselamosModule
+    Ng2CarouselamosModule,
+    HttpClientModule
   ],
   providers: [ { provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]

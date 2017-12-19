@@ -1,0 +1,29 @@
+<div class="container">
+<div ng2-carouselamos
+     [items]="pics"
+     [width]="1000"
+     [$prev]="prev"
+     [$next]="next"
+     [$item]="item">
+</div>
+
+<ng-template class="pr-cal-head-left" #prev>
+  <button class="btn btn-default pr-btn-calendar">
+    <i class="fa fa-caret-left"></i>
+  </button>
+</ng-template>
+
+<ng-template class="pr-cal-head-right" #next>
+  <button class="btn btn-default pr-btn-calendar">
+    <i class="fa fa-caret-right"></i>
+  </button>
+</ng-template>
+
+<div data-interval="500">
+<ng-template #item >
+  <div style="min-width: 500px;" class="items" *ngFor="let pictures of pics">
+    <img [src]="pictures.name">
+  </div>
+</ng-template>
+</div>
+</div>

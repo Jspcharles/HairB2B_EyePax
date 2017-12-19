@@ -13,7 +13,9 @@ export class CalendarComponent implements OnInit {
   day: any[] = [];
   show = false;
   disDate: any[];
-  // acer;
+  acer = true;
+  bookDate;
+  finalBookDate='25';
 
   days__: Day[] = [];
 
@@ -23,26 +25,22 @@ export class CalendarComponent implements OnInit {
     this.show = !this.show;
 
     this.selectedDate = date;
+
   }
 
   slotShow1(date) {
     const d = this.days__.find(value => {
-      if (value.date === date.date) {
-        return true;
-      }
-      return false;
+      return value.date === date.date;
     });
     d.showSlot1 = !d.showSlot1;
   }
 
   slotShow2(date) {
     const d = this.days__.find(value => {
-      if (value.date === date.date) {
-        return true;
-      }
-      return false;
+      return value.date === date.date;
     });
     d.showSlot2 = !d.showSlot2;
+
   }
 
   // showNotAvaDate(){
@@ -51,6 +49,21 @@ export class CalendarComponent implements OnInit {
   //         return true;
   //       }
   //     }
+  // }
+
+  makeBooking1() {
+    this.bookDate = this.selectedDate.format('D MMMM 2017, dddd') + (' - Morning');
+  }
+
+  makeBooking2() {
+    this.bookDate = this.selectedDate.format('D MMMM 2017, dddd') + (' - Evening');
+  }
+
+  // toggleShow2() {
+  //
+  //   if (this.selectedDate = true){
+  //     this.makeBooking();
+  //   }
   // }
 
   constructor() {
@@ -63,6 +76,7 @@ export class CalendarComponent implements OnInit {
     //   }
     //   return this.acer;
     // }
+
   }
 
   ngOnInit() {

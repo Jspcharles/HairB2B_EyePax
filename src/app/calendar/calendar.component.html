@@ -45,10 +45,10 @@
                 <div class="pr-cal-head-mid">
                   <div class="pr-cal-dates">
                     <div class="pr-cal-date">
-                      <ng-template let-i="index" #item>
+                      <ng-template #item>
                         <div style="min-width: 200px;" class="items" *ngFor="let date of days__">
                           <div>
-                            <button class="w3-button" (click)="toggleShow(date.date)" [ngClass]="{'btn-NotAvailable': acer === true}">
+                            <button class="w3-button" (click)="toggleShow(date.date)" [ngClass]="{'btn-NotAvailable': date.date.format('D') === '21' || date.date.format('D') === '23'}" [disabled]="date.date.format('D') === '21' || date.date.format('D') === '23'">
 
                               <div>
                                 <!--Hidden and show when Select those dates-->
@@ -89,17 +89,19 @@
 
                       <button type="button" class="w3-button-slot w3-width"
                               [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot1}"
-                              (click)="slotShow1(date)">8PM - 12PM
+                              (click)="slotShow1(date) ; makeBooking1()">8PM - 12PM
                       </button>
                     </div>
                     <br>
                     <div>
                       <button type="button" class="w3-button-slot w3-width"
-                              [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot2}"
-                              (click)="slotShow2(date)">1PM - 5PM
+                              [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot2,
+                              'makeBook': selectedDate && selectedDate===date.date && date.showSlot2}"
+                              (click)="slotShow2(date) ; makeBooking2()">1PM - 5PM
                       </button>
+                      <br>
+                      <p *ngIf="selectedDate && date.showSlot2 || date.showSlot1">{{bookDate}}</p>
                     </div>
-
                   </div>
                 </div>
               </div>
