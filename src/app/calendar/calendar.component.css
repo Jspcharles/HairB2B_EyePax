@@ -87,3 +87,12 @@ td{
 .makeBook{
   visibility: visible;
 }
+
+
+.makeRgt{
+  padding-left: 50px;
+}
+
+p{
+  padding-right: 900px;
+}

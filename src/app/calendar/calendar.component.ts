@@ -12,12 +12,15 @@ export class CalendarComponent implements OnInit {
 
   day: any[] = [];
   show = false;
-  disDate: any[];
+  sessionDate: any[] = [];
   acer = true;
   bookDate;
-  finalBookDate='25';
-
+  finalBookDate = '25';
+  slotCost: any[] = [];
+  cost1: 100;
+  cost2;
   days__: Day[] = [];
+  total;
 
   selectedDate: any;
 
@@ -53,10 +56,40 @@ export class CalendarComponent implements OnInit {
 
   makeBooking1() {
     this.bookDate = this.selectedDate.format('D MMMM 2017, dddd') + (' - Morning');
+
+    for (let i =0; i<this.sessionDate.length;i++){
+      if (this.bookDate === this.sessionDate[i]){
+        this.sessionDate.splice(i,1);
+        this.slotCost.splice(i,1);
+        return;
+      }
+    }
+    this.sessionDate.push(this.bookDate);
+    this.slotCost.push(100);
   }
 
   makeBooking2() {
     this.bookDate = this.selectedDate.format('D MMMM 2017, dddd') + (' - Evening');
+
+    for (let i =0; i<this.sessionDate.length;i++){
+      if (this.bookDate === this.sessionDate[i]){
+        this.sessionDate.splice(i,1);
+        this.slotCost.splice(i,1);
+        return;
+      }
+    }
+    this.sessionDate.push(this.bookDate);
+    this.slotCost.push(200);
+  }
+
+  totalAmount(){
+    this.total = 0;
+    for (let i = 0; i<this.slotCost.length;i++){
+      this.total = this.total + this.slotCost[i];
+      console.log(this.total);
+
+    }
+    return this.total;
   }
 
   // toggleShow2() {
@@ -81,7 +114,7 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
 
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 30; i++) {
       this.day[i] = this.getDate(i);
       this.days__.push({date: this.day[i], showSlot1: false, showSlot2: false});
     }
@@ -91,6 +124,8 @@ export class CalendarComponent implements OnInit {
   getDate(num) {
     return moment().add(num, 'days');
   }
+
+
 
 }
 

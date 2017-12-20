@@ -26,11 +26,11 @@
         <p>Claire Mason the colour Queen of Perth. Claire and her hand selected and exceptionally trained team have built a solid reputation and social media presence
           by the amazing colour trends.</p>
         <span><strong>Specialized in</strong></span><br>
-        <span class="label label-warning">Advanced colour</span>
-        <span class="label label-info">Colour correction</span>
-        <span class="label label-success">Hair painting</span>
+        <span class="label label-warning">{{skills[0]}}</span>
+        <span class="label label-info">{{skills[1]}}</span>
+        <!--<span class="label label-success">{{skills[2]}}</span>-->
         <div>
-        <button type="button" class="btn btn-default" routerLink="/hairstylist-pro" [queryParams]="{'usd':usd, 'count' :country, 'name' :name}">View Profile</button>
+        <button type="button" class="btn btn-default" routerLink="/hairstylist-pro" [queryParams]="{'usd':cost, 'count' :address, 'name' :name}">View Profile</button>
         </div>
       </div>
     </article>

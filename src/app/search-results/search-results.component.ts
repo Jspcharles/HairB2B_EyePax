@@ -12,6 +12,7 @@ export class SearchResultsComponent implements OnInit {
   address;
   need;
   cost;
+  skills;
 
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
     this.http.get<Stylist>('/api/stylist/getsamplestylist').subscribe(
@@ -19,6 +20,8 @@ export class SearchResultsComponent implements OnInit {
         this.name = data.name;
         this.address = data.address;
         this.cost = data.cost;
+        this.skills = data.skills;
+        console.log(this.skills);
       }
     );
   }
@@ -37,4 +40,5 @@ interface Stylist {
   name: string;
   address: string;
   cost: number;
+  skills: string[];
 }
