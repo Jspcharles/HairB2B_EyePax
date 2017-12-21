@@ -96,3 +96,8 @@ td{
 p{
   padding-right: 900px;
 }
+
+.cell {
+
+  width: 500px;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {log} from 'util';
 
 @Component({
   selector: 'app-search-results',
@@ -8,20 +9,15 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  name;
-  address;
-  need;
-  cost;
-  skills;
 
+  stylistName: any[] = [];
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
-    this.http.get<Stylist>('/api/stylist/getsamplestylist').subscribe(
+
+
+    this.http.get<Stylist>('/api/stylist/getStylistName').subscribe(
       data => {
-        this.name = data.name;
-        this.address = data.address;
-        this.cost = data.cost;
-        this.skills = data.skills;
-        console.log(this.skills);
+        this.stylistName = data;
+        console.log(this.stylistName);
       }
     );
   }

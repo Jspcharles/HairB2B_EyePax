@@ -1,14 +1,8 @@
 <div>
   <section class="pr-availability-calendar">
-    <div class="">
-      <div>
-        <div class="">
-          <div class="row">
             <div class="col-md-12">
               <h2 class="pr-h2-tag">Choose your sessions</h2>
             </div>
-          </div>
-          <div class="">
             <div>
               <table>
                 <tr>
@@ -25,9 +19,7 @@
                 </tr>
               </table>
             </div>
-          </div>
           <div class="pr-cal-box panel panel-default text-center">
-            <div class="pr-cal-month">
               <div class="panel-heading pr-cal-heading">
                 <div ng2-carouselamos
                      [items]="day"
@@ -42,13 +34,11 @@
                     <i class="fa fa-caret-left"></i>
                   </button>
                 </ng-template>
-                <div class="pr-cal-head-mid">
-                  <div class="pr-cal-dates">
                     <div class="pr-cal-date">
                       <ng-template #item>
                         <div style="min-width: 200px;" class="items" *ngFor="let date of days__">
                           <div>
-                            <button class="w3-button" (click)="toggleShow(date.date)" [ngClass]="{'btn-NotAvailable': date.date.format('D') === '21' || date.date.format('D') === '23'}" [disabled]="date.date.format('D') === '21' || date.date.format('D') === '23'">
+                            <button class="w3-button" (click)="toggleShow(date.date)" [ngClass]="{'btn-NotAvailable': date.date.format('D') === '21' || date.date.format('D') === '25'}" [disabled]="date.date.format('D') === '21' || date.date.format('D') === '25'">
 
                               <div>
                                 <!--Hidden and show when Select those dates-->
@@ -74,8 +64,6 @@
                         </div>
                       </ng-template>
                     </div>
-                  </div>
-                </div>
                 <ng-template class="pr-cal-head-right" #next>
                   <button class="btn btn-default pr-btn-calendar">
                     <i class="fa fa-caret-right"></i>
@@ -89,7 +77,7 @@
 
                       <button type="button" class="w3-button-slot w3-width"
                               [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot1}"
-                              (click)="slotShow1(date) ; makeBooking1()">8PM - 12PM
+                              (click)="slotShow1(date) ; makeBooking1() ; totalAmount()">8PM - 12PM
                       </button>
                     </div>
                     <br>
@@ -97,33 +85,47 @@
                       <button type="button" class="w3-button-slot w3-width"
                               [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot2,
                               'makeBook': selectedDate && selectedDate===date.date && date.showSlot2}"
-                              (click)="slotShow2(date) ; makeBooking2()">1PM - 5PM
+                              (click)="slotShow2(date) ; makeBooking2(); totalAmount()">1PM - 5PM
                       </button>
                     </div>
                       <br>
-                      <div class="container">
-                        <label>Your Session Dates are :</label>
+                      <!--<div class="tab-row">-->
+                        <!--<label>Your Session Dates are :</label>-->
 
-                          <div  *ngFor="let bdate of sessionDate"><label>{{bdate}}</label></div>
-                          <div *ngFor="let sCost of slotCost"><label>{{sCost}}</label></div>
+                          <!--<div class="cell"  *ngFor="let bdate of sessionDate"><label>{{bdate}}</label></div>-->
+                          <!--<div class="cell" *ngFor="let sCost of slotCost"><label>{{sCost}}</label></div>-->
 
-                      </div>
+                      <!--</div>-->
 
-                    <div>
-                      <label>Total Amount : {{total}}</label>
-                      <button (click)="totalAmount()">Click Here</button>
-                      <div>
+                    <table>
+                      <tr>
+                        <td><div class="cell" *ngFor="let bdate of sessionDate"><label>{{bdate}}</label></div></td>
+                        <td><div class="cell" *ngFor="let sCost of slotCost"><label>AUD  {{sCost}}</label></div></td>
+                      </tr>
+                      <hr>
+                      <tr>
+                        <td><div class="cell"><strong>Total Amount :</strong></div></td>
+                        <td><div class="cell"><strong>AUD  {{total}}</strong></div></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><button type="button" class="btn btn-success">Book Now</button></td>
+                      </tr>
+                      <br>
+                    </table>
 
-                      </div>
-                    </div>
+                    <!--<div>-->
+
+                      <!--<label>Total Amount : {{total}}</label>-->
+                      <!--&lt;!&ndash;<button (click)="totalAmount()">Click Here</button>&ndash;&gt;-->
+                      <!--<div>-->
+
+                      <!--</div>-->
+                    <!--</div>-->
 
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </div>

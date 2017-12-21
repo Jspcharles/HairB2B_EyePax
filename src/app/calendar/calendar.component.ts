@@ -82,9 +82,9 @@ export class CalendarComponent implements OnInit {
     this.slotCost.push(200);
   }
 
-  totalAmount(){
+  totalAmount() {
     this.total = 0;
-    for (let i = 0; i<this.slotCost.length;i++){
+    for (let i = 0; i<this.slotCost.length;i++) {
       this.total = this.total + this.slotCost[i];
       console.log(this.total);
 

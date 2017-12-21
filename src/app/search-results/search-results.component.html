@@ -5,15 +5,17 @@
     <hr>
   </div>
   <section class="col-xs-12 col-sm-6 col-md-12">
-    <article class="search-result row">
+    <article class="search-result row" *ngFor="let list of stylistName">
       <div class="col-xs-12 col-sm-12 col-md-3">
         <a href="" title="Lorem ipsum" class="thumbnail">
           <img src="../../assets/images/profile_img.png" alt="Lorem ipsum" /></a>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-2">
         <ul class="meta-search" style="font-size: 20px">
-          <li><i class="glyphicon glyphicon-usd"></i> <span> {{cost}}</span><span> Per Day</span></li>
-          <li><i class="glyphicon glyphicon-home"></i><span>  {{address}}</span></li>
+          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost1}}</span><span> Morning</span></li>
+          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost2}}</span><span> Evening</span></li>
+          <li><i class="glyphicon glyphicon-home"></i><span>  {{list.address}}</span></li>
+          <li><i class="glyphicon glyphicon-earphone"></i><span>  {{list.telephone}}</span></li>
         </ul>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
@@ -22,13 +24,13 @@
         <span class="fa fa-star"></span>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-        <h3>{{name}}</h3>
-        <p>Claire Mason the colour Queen of Perth. Claire and her hand selected and exceptionally trained team have built a solid reputation and social media presence
-          by the amazing colour trends.</p>
+        <h3>{{list.name}}</h3>
+        <p>{{list.description}}</p>
         <span><strong>Specialized in</strong></span><br>
-        <span class="label label-warning">{{skills[0]}}</span>
-        <span class="label label-info">{{skills[1]}}</span>
-        <!--<span class="label label-success">{{skills[2]}}</span>-->
+        <div class="d-flex" >
+          <span class="badge badge-light m-1" *ngFor="let skills of list.skill">{{skills}}</span>
+        </div>
+
         <div>
         <button type="button" class="btn btn-default" routerLink="/hairstylist-pro" [queryParams]="{'usd':cost, 'count' :address, 'name' :name}">View Profile</button>
         </div>
