@@ -1,22 +1,37 @@
 <div class="container">
   <div class="col-md-12 background-cover">
-<div class="container">
-  <div class="col-md-12 pr-hero-black-holder">
-    <div class="banner-heading">
-      <h2>Book a hair educator, stylist, colourist or assistant</h2>
-      <P>We care about your hair and your well being</P>
-      <div>
-        <div class="form-group col-md-5 row">
-          <label class="label">I need a</label>
-          <select id="inputState" class="form-control">
-            <option selected *ngFor="let needs of need">{{needs}}</option>
-          </select>
+    <div class="container">
+      <div class="col-md-12 pr-hero-black-holder">
+        <div class="banner-heading">
+          <h2>Book a hair educator, stylist, colourist or assistant</h2>
+          <P>We care about your hair and your well being</P>
+          <div>
+            <div class="form-group col-md-5 row">
+              <label class="label">I need a</label>
+              <select id="inputState" [(ngModel)]="qwe" [ngModelOptions]="{standalone:true}" class="form-control">
+                <option selected  *ngFor="let type of need">{{type}}</option>
+              </select>
+            </div>
+
+            <div *ngIf="qwe === 'Name'">
+              <input type="text" class="search-query form-control" placeholder="Search by Name"/>
+              <button type="button" class="btn btn-danger" routerLink="/search">Find Here</button>
+            </div>
+
+            <div *ngIf="qwe === 'Skill'">
+              <input type="text" class="search-query form-control" placeholder="Search by Skill"/>
+              <button type="button" class="btn btn-danger" routerLink="/search">Find Here</button>
+            </div>
+
+            <div *ngIf="qwe === 'Location'">
+              <input type="text" class="search-query form-control" placeholder="Search by location"/>
+              <button type="button" class="btn btn-danger" routerLink="/search">Find Here</button>
+            </div>
+
+          </div>
+          <br>
         </div>
-        <input type="text" class="  search-query form-control" placeholder="Search"/>
-        <button type="button" class="btn btn-danger" routerLink="/search" [queryParams]="{'type':need}">Find Here</button>
       </div>
     </div>
-  </div>
-</div>
   </div>
 </div>

@@ -10,7 +10,7 @@ import {log} from 'util';
 })
 export class SearchResultsComponent implements OnInit {
 
-  stylistName: any[] = [];
+  stylistName:Stylist[] = [];
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
 
 

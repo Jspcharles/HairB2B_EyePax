@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {AppComponent} from './app.component';
 import {SliderComponent} from './slider/slider.component';
@@ -21,6 +22,7 @@ import { TestAlComponent } from './test-al/test-al.component';
 import { BookingShowsComponent } from './booking-shows/booking-shows.component';
 import { HairstylistProfilePicsComponent } from './hairstylist-profile-pics/hairstylist-profile-pics.component';
 import {HttpClientModule} from '@angular/common/http';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 
 const routes: Routes = [
@@ -58,7 +60,9 @@ const routes: Routes = [
     BrowserModule, ClickOutsideModule,
     RouterModule.forRoot(routes),
     Ng2CarouselamosModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatButtonModule, MatCheckboxModule
   ],
   providers: [ { provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
