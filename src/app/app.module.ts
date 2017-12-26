@@ -23,6 +23,7 @@ import { BookingShowsComponent } from './booking-shows/booking-shows.component';
 import { HairstylistProfilePicsComponent } from './hairstylist-profile-pics/hairstylist-profile-pics.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes: Routes = [
@@ -62,7 +63,9 @@ const routes: Routes = [
     Ng2CarouselamosModule,
     HttpClientModule,
     FormsModule,
-    MatButtonModule, MatCheckboxModule
+    MatButtonModule, MatCheckboxModule,
+    NgbModule.forRoot(),
+
   ],
   providers: [ { provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]

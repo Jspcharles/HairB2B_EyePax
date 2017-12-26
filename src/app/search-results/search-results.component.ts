@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {log} from 'util';
 
 @Component({
   selector: 'app-search-results',
@@ -10,16 +9,23 @@ import {log} from 'util';
 })
 export class SearchResultsComponent implements OnInit {
 
-  stylistName:Stylist[] = [];
-  constructor(private  route: ActivatedRoute, private http: HttpClient) {
+  stylistName: Stylist[] = [];
+  need;
 
+  countResults;
+
+  constructor(private  route: ActivatedRoute, private http: HttpClient) {
 
     this.http.get<Stylist>('/api/stylist/getStylistName').subscribe(
       data => {
         this.stylistName = data;
-        console.log(this.stylistName);
+        // console.log(this.stylistName);
+        // console.log(this.stylistName.length);
+        this.countResults = this.stylistName.length;
       }
     );
+
+
   }
 
   ngOnInit() {

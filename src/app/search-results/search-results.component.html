@@ -1,30 +1,35 @@
 <div class="container">
   <div>
     <h1>Search results</h1>
-    <h2 class="lead"><strong class="text-danger">5</strong> Results were found for the search of <strong class="text-danger">Hairstylist</strong></h2>
+    <h2 class="lead"><strong class="text-danger">{{countResults}}</strong> Results were found for the search of <strong class="text-danger">Hairstylist</strong></h2>
     <hr>
   </div>
+
   <section class="col-xs-12 col-sm-6 col-md-12">
     <article class="search-result row" *ngFor="let list of stylistName">
       <div class="col-xs-12 col-sm-12 col-md-3">
-        <a href="" title="Lorem ipsum" class="thumbnail">
-          <img src="../../assets/images/profile_img.png" alt="Lorem ipsum" /></a>
+        <a href="" class="thumbnail">
+          <!--<img src="../../assets/images/profile_img.png"/>-->
+          <img src="data:image/jpg;base64,{{list.profile_pic}}" class="pro_img">
+        </a>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-2">
         <ul class="meta-search" style="font-size: 20px">
-          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost1}}</span><span> Morning</span></li>
-          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost2}}</span><span> Evening</span></li>
+          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost1}}</span><span> (Morning)</span></li>
+          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost2}}</span><span> (Evening)</span></li>
           <li><i class="glyphicon glyphicon-home"></i><span>  {{list.address}}</span></li>
           <li><i class="glyphicon glyphicon-earphone"></i><span>  {{list.telephone}}</span></li>
         </ul>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
+        <!--<span class="fa fa-star checked"></span>-->
+        <!--<span class="fa fa-star checked"></span>-->
+        <!--<span class="fa fa-star checked"></span>-->
+        <!--<span class="fa fa-star checked"></span>-->
+        <!--<span class="fa fa-star"></span>-->
+        <ngb-rating [(rate)]="list.rate" [readonly]="true" max="5" class="star full"></ngb-rating>
+
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-        <h3>{{list.name}}</h3>
+        <h3>{{list.first_name}} {{list.last_name}}</h3>
         <p>{{list.description}}</p>
         <span><strong>Specialized in</strong></span><br>
         <div class="d-flex" >
@@ -34,7 +39,11 @@
         <div>
         <button type="button" class="btn btn-default" routerLink="/hairstylist-pro" [queryParams]="{'usd':cost, 'count' :address, 'name' :name}">View Profile</button>
         </div>
+
+        <hr>
       </div>
+
     </article>
+
   </section>
 </div>
