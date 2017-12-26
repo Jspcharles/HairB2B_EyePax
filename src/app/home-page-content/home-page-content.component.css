@@ -11,3 +11,7 @@ h1{
 .pts{
   width: 500px;
 }
+
+.inline{
+  margin: 0;
+}

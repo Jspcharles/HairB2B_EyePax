@@ -24,6 +24,7 @@ import { HairstylistProfilePicsComponent } from './hairstylist-profile-pics/hair
 import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AdvancedFilterComponent } from './advanced-filter/advanced-filter.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,7 @@ const routes: Routes = [
     TestAlComponent,
     BookingShowsComponent,
     HairstylistProfilePicsComponent,
+    AdvancedFilterComponent,
   ],
   imports: [
     BrowserModule, ClickOutsideModule,
