@@ -9,19 +9,35 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SearchResultsComponent implements OnInit {
 
-  stylistName: Stylist[] = [];
+  stylistDetails: Stylist[] = [];
   need;
+  type;
+  showMessage;
+  preferred_locations = [];
 
   countResults;
 
+  // onNotifyClicked(message:string): void{
+  //   this.showMessage = message;
+  // }
+
+  onClickLocFiltered(): void{
+    this.http.get<any>('/api/stylist/getStylist/loc').subscribe(
+      data => {
+        this.stylistDetails = data;
+        this.countResults = this.stylistDetails.length;
+      }
+    );
+  }
+
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
 
-    this.http.get<Stylist>('/api/stylist/getStylistName').subscribe(
+    this.http.get<any>('/api/stylist/getStylistName').subscribe(
       data => {
-        this.stylistName = data;
+        this.stylistDetails = data;
         // console.log(this.stylistName);
         // console.log(this.stylistName.length);
-        this.countResults = this.stylistName.length;
+        this.countResults = this.stylistDetails.length;
       }
     );
 
@@ -34,6 +50,7 @@ export class SearchResultsComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.need = params['need'] || 0;
+        this.type = params['type'] || 0;
       });
   }
 }

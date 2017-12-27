@@ -1,18 +1,19 @@
 <div class="container">
   <div>
     <h1>Search results</h1>
-    <h2 class="lead"><strong class="text-danger">{{countResults}}</strong> Results were found for the search of <strong class="text-danger">Hairstylist</strong></h2>
+    <h2 class="lead"><strong class="text-danger">{{countResults}}</strong> Results were found<strong class="text-danger">{{type}}</strong></h2>
 
     <div class="container-fluid">
-      <app-advanced-filter></app-advanced-filter>
+      <app-advanced-filter (notify)="onClickLocFiltered($event)"></app-advanced-filter>
     </div>
+
     <hr>
   </div>
 
 
 
   <section class="col-xs-12 col-sm-6 col-md-12">
-    <article class="search-result row" *ngFor="let list of stylistName">
+    <article class="search-result row" *ngFor="let list of stylistDetails">
       <div class="col-xs-12 col-sm-12 col-md-3">
         <a href="" class="thumbnail">
           <!--<img src="../../assets/images/profile_img.png"/>-->
@@ -23,8 +24,8 @@
         <ul class="meta-search" style="font-size: 20px">
           <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost1}}</span><span> (Morning)</span></li>
           <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost2}}</span><span> (Evening)</span></li>
-          <li><i class="glyphicon glyphicon-home"></i><span>  {{list.address}}</span></li>
-          <li><i class="glyphicon glyphicon-earphone"></i><span>  {{list.telephone}}</span></li>
+          <li><i class="glyphicon glyphicon-home"></i><span>  {{list.preferred_location}}</span></li>
+          <li><i class="g  lyphicon glyphicon-earphone"></i><span>  {{list.telephone}}</span></li>
         </ul>
         <!--<span class="fa fa-star checked"></span>-->
         <!--<span class="fa fa-star checked"></span>-->
@@ -50,9 +51,10 @@
       </div>
 
     </article>
-
   </section>
 </div>
+
+
 
 
 
