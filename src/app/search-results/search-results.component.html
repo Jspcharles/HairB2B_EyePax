@@ -22,8 +22,8 @@
       </div>
       <div class="col-xs-12 col-sm-12 col-md-2">
         <ul class="meta-search" style="font-size: 20px">
-          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost1}}</span><span> (Morning)</span></li>
-          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.cost2}}</span><span> (Evening)</span></li>
+          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.mrng_cost}}</span><span> (Morning)</span></li>
+          <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.evng_cost}}</span><span> (Evening)</span></li>
           <li><i class="glyphicon glyphicon-home"></i><span>  {{list.preferred_location}}</span></li>
           <li><i class="g  lyphicon glyphicon-earphone"></i><span>  {{list.telephone}}</span></li>
         </ul>
@@ -32,8 +32,7 @@
         <!--<span class="fa fa-star checked"></span>-->
         <!--<span class="fa fa-star checked"></span>-->
         <!--<span class="fa fa-star"></span>-->
-        <ngb-rating [(rate)]="list.rate" [readonly]="true" max="5" class="star full"></ngb-rating>
-
+        <ngb-rating [(rate)]="list.rating" [readonly]="true" max="5" class="star full"></ngb-rating>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
         <h3>{{list.first_name}} {{list.last_name}}</h3>

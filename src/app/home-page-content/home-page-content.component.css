@@ -1,15 +1,22 @@
-.img{
-  height: 200px;
+img{
+  height: 250px;
   width: 250px;
   padding-top: 20px;
 }
 
-h1{
-  color: white;
+.img1{
+  height: 250px;
+  width: 300px;
+  padding-top: 20px;
 }
 
-.pts{
-  width: 500px;
+.hwidth{
+  padding-top: 20px;
+  color: #FFFFFF;
+}
+
+h1{
+  color: white;
 }
 
 .inline{

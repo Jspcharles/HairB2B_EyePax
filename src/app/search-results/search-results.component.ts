@@ -32,12 +32,22 @@ export class SearchResultsComponent implements OnInit {
 
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
 
-    this.http.get<any>('/api/stylist/getStylistName').subscribe(
+    this.http.get<any>('/api/stylist_db/stylist_details').subscribe(
       data => {
         this.stylistDetails = data;
         // console.log(this.stylistName);
         // console.log(this.stylistName.length);
         this.countResults = this.stylistDetails.length;
+
+        // data.sort(function (a, b) {
+        //   if (a.rate > b.rate){
+        //     return -1;
+        //   }
+        //   else if (a.rate === b.rate){
+        //     return 0;
+        //   }
+        //   return 1;
+        // });
       }
     );
 
@@ -56,8 +66,5 @@ export class SearchResultsComponent implements OnInit {
 }
 
 interface Stylist {
-  name: string;
-  address: string;
-  cost: number;
-  skills: string[];
+
 }
