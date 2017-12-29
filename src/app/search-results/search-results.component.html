@@ -6,11 +6,9 @@
     <div class="container-fluid">
       <app-advanced-filter (notify)="onClickLocFiltered($event)"></app-advanced-filter>
     </div>
-
+    {{hname}}
     <hr>
   </div>
-
-
 
   <section class="col-xs-12 col-sm-6 col-md-12">
     <article class="search-result row" *ngFor="let list of stylistDetails">
@@ -24,7 +22,7 @@
         <ul class="meta-search" style="font-size: 20px">
           <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.mrng_cost}}</span><span> (Morning)</span></li>
           <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.evng_cost}}</span><span> (Evening)</span></li>
-          <li><i class="glyphicon glyphicon-home"></i><span>  {{list.preferred_location}}</span></li>
+          <li><i class="glyphicon glyphicon-home"></i><span>  {{list.address_line_1}}</span></li>
           <li><i class="g  lyphicon glyphicon-earphone"></i><span>  {{list.telephone}}</span></li>
         </ul>
         <!--<span class="fa fa-star checked"></span>-->
@@ -41,9 +39,8 @@
         <div class="d-flex" >
           <span class="badge badge-light m-1" *ngFor="let skills of list.skill">{{skills}}</span>
         </div>
-
         <div>
-        <button type="button" class="btn btn-default" routerLink="/hairstylist-pro" [queryParams]="{'usd':cost, 'count' :address, 'name' :name}">View Profile</button>
+        <button type="button" class="btn btn-default" routerLink="/hairstylist-pro" [queryParams]="{'name':skills}">View Profile</button>
         </div>
 
         <hr>

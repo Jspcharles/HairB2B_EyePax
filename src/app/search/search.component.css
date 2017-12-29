@@ -116,4 +116,10 @@ input{
   background: rgba(0,0,0,.6);
 }
 
+.suggestions{
+  text-align: left;
+  background-color: #FFFFFF;
+  font-size: medium;
+}
+
 

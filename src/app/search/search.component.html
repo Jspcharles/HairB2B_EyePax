@@ -14,8 +14,15 @@
             </div>
 
             <div *ngIf="qwe === 'Name'">
-              <input type="text" class="search-query form-control" placeholder="Search by Name"/>
-              <button type="button" class="btn btn-danger" routerLink="/search">Find Here</button>
+              <div>
+                <input type="text" class="search-query form-control" placeholder="Search by Name" [(ngModel)]=query (keyup)=filter() />
+                <div class="suggestions" *ngIf="filteredList.length > 0">
+                  <ul *ngFor="let item of filteredList" >
+                      <a (click)="select(item)" >{{item}}</a>
+                  </ul>
+                </div>
+              </div>
+              <button type="button" class="btn btn-danger" routerLink="/search" [queryParams]="{'name':query}">Find Here</button>
             </div>
 
             <div *ngIf="qwe === 'Skill'">
@@ -28,6 +35,8 @@
               <button type="button" class="btn btn-danger" routerLink="/search">Find Here</button>
             </div>
 
+
+
           </div>
           <br>
         </div>
@@ -35,3 +44,4 @@
     </div>
   </div>
 </div>
+

@@ -8,11 +8,11 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-
   stylistDetails: Stylist[] = [];
   need;
   type;
   showMessage;
+  hname;
   preferred_locations = [];
 
   countResults;
@@ -22,7 +22,7 @@ export class SearchResultsComponent implements OnInit {
   // }
 
   onClickLocFiltered(): void{
-    this.http.get<any>('/api/stylist/getStylist/loc').subscribe(
+    this.http.get<any>('/api/stylist_db/stylist_details/Melbourne').subscribe(
       data => {
         this.stylistDetails = data;
         this.countResults = this.stylistDetails.length;
@@ -38,30 +38,17 @@ export class SearchResultsComponent implements OnInit {
         // console.log(this.stylistName);
         // console.log(this.stylistName.length);
         this.countResults = this.stylistDetails.length;
-
-        // data.sort(function (a, b) {
-        //   if (a.rate > b.rate){
-        //     return -1;
-        //   }
-        //   else if (a.rate === b.rate){
-        //     return 0;
-        //   }
-        //   return 1;
-        // });
       }
     );
-
-
   }
 
   ngOnInit() {
-    this.route
-      .queryParams
-      .subscribe(params => {
-        // Defaults to 0 if no query param provided.
-        this.need = params['need'] || 0;
-        this.type = params['type'] || 0;
-      });
+
+  }
+
+  onFiltered(message:string):void{
+    this.showMessage = message;
+    console.log("Charles" + this.showMessage);
   }
 }
 
