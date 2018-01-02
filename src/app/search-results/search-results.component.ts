@@ -17,6 +17,7 @@ export class SearchResultsComponent implements OnInit {
   id;
   location;
   skill;
+  name;
 
   countResults;
 
@@ -76,6 +77,16 @@ export class SearchResultsComponent implements OnInit {
       if (value.skill){
         this.skill = value.skill;
         this.http.get<any>('/api/stylist_db/stylist_details/bySkill/' + this.skill).subscribe(
+          data => {
+            this.stylistDetails = data;
+            this.countResults = this.stylistDetails.length;
+          }
+        );
+      }
+
+      if (value.name){
+        this.name = value.name;
+        this.http.get<any>('/api/stylist_db/stylist_details/byName/' + this.name).subscribe(
           data => {
             this.stylistDetails = data;
             this.countResults = this.stylistDetails.length;
