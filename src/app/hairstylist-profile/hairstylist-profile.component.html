@@ -1,43 +1,37 @@
-<div class="container">
-  <div class="row panel">
-    <div class="col-md-20  col-xs-12">
-      <img src="../../assets/images/profile_img.png" class="img-thumbnail picture hidden-xs" />
-      <img src="" class="img-thumbnail visible-xs picture_mob" />
-      <div class="header">
-        <h1>{{name}}</h1>
-        <div>
-          <span><strong>Specialized in</strong></span><br>
-          <span class="label label-warning">Advanced colour</span>
-          <span class="label label-info">Colour correction</span>
-          <span class="label label-success">Hair painting</span>
-        </div>
-        <span>Claire Mason the colour Queen of Perth, owner of East Fremantle's leading Hair Lounge - Eighty One on George.
-          Claire and her hand selected and exceptionally trained team have built a solid reputation and social media presence
-          by the amazing colour trends, crazy colours they create daily and the ongoing motivation they share! Claire is an advocate
-          for young aspiring business owners and shares her wealth of knowledge and struggles she has over come being in business from age of 21.
-        </span>
-      </div>
-    </div>
-  </div>
 
-  <div class="row nav">
-    <div class="col-md-8 col-xs-12">
-      <div class="col-md-4 col-xs-4 well"><i class="glyphicon glyphicon-usd"></i> <strong>{{usd}}</strong></div>
-      <div class="col-md-4 col-xs-4 well"><i class="glyphicon glyphicon-home"></i>  {{county}}</div>
-      <div class="col-md-4 col-xs-4 well">
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-      </div>
+<div class="container">
+  <article class="search-result row">
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <a href="" class="thumbnail">
+        <!--<img src="../../assets/images/profile_img.png"/>-->
+        <img src="data:image/jpg;base64,{{profile_pic}}" class="pro_img">
+      </a>
     </div>
-  </div>
+    <div class="col-xs-12 col-sm-12 col-md-2">
+      <ul class="meta-search" style="font-size: 20px">
+        <li><i class="glyphicon glyphicon-usd"></i> <span> {{mrng_cost}}</span><span> (Morning)</span></li>
+        <li><i class="glyphicon glyphicon-usd"></i> <span> {{evng_cost}}</span><span> (Evening)</span></li>
+        <li><i class="glyphicon glyphicon-home"></i><span>  {{address}}</span></li>
+        <li><i class="glyphicon glyphicon-earphone"></i><span>  {{telephone}}</span></li>
+      </ul>
+      <ngb-rating [(rate)]="rating" [readonly]="true" max="5" class="star full"></ngb-rating>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+      <h3>{{first_name}} {{last_name}}</h3>
+      <p>{{description}}</p>
+      <span><strong>Specialized in</strong></span><br>
+      <div class="d-flex" >
+      <span class="badge badge-light m-1" *ngFor="let allskill of skills">{{allskill}}</span>
+      </div>
+      <hr>
+    </div>
+  </article>
 
 </div>
+
 <div class="container">
   <app-calendar></app-calendar>
-  <app-hairstylist-profile-pics></app-hairstylist-profile-pics>
+  <!--<app-hairstylist-profile-pics></app-hairstylist-profile-pics>-->
 </div>
 
 

@@ -35,7 +35,7 @@ const routes: Routes = [
     path: 'search', component: SearchResultsComponent
   },
   {
-    path: 'hairstylist-pro', component: HairstylistProfileComponent
+    path: 'hairstylist-pro/:id', component: HairstylistProfileComponent
   }
 ];
 

@@ -40,7 +40,7 @@
           <span class="badge badge-light m-1" *ngFor="let skills of list.skill">{{skills}}</span>
         </div>
         <div>
-        <button type="button" class="btn btn-default" routerLink="/hairstylist-pro" [queryParams]="{'name':skills}">View Profile</button>
+        <button type="button" class="btn btn-default" routerLink="/hairstylist-pro/{{ list.id}}" [queryParams]="{'name':skills}">View Profile</button>
         </div>
 
         <hr>
