@@ -32,10 +32,21 @@ export class SearchResultsComponent implements OnInit {
   //   this.showMessage = message;
   // }
 
-  // onSelect1(val) {
-  //   console.log(val)
-  //   this.stylistDetails
-  // }
+  onSelect1(val) {
+    console.log(val)
+    this.stylistDetails = this.OriginalDetails.filter(x => {
+
+      for (var i=0; i<x.skill.length; i++){
+        // console.log(x.skill[i] + ' ' + val);
+        if (x.skill[i] === val){
+          console.log('---------------------');
+          console.log('Yeah Matched');
+          console.log('---------------------');
+          return x.skill[i] === val;
+        }
+      }
+    })
+  }
 
   onSelect2(val) {
     console.log(val);
