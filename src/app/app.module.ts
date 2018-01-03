@@ -25,6 +25,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AdvancedFilterComponent } from './advanced-filter/advanced-filter.component';
+import { PaypalComponent } from './paypal/paypal.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,9 @@ const routes: Routes = [
   },
   {
     path: 'hairstylist-pro/:id', component: HairstylistProfileComponent
+  },
+  {
+    path: 'paypal', component: PaypalComponent
   }
 ];
 
@@ -58,6 +62,7 @@ const routes: Routes = [
     BookingShowsComponent,
     HairstylistProfilePicsComponent,
     AdvancedFilterComponent,
+    PaypalComponent,
   ],
   imports: [
     BrowserModule, ClickOutsideModule,

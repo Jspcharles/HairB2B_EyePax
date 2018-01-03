@@ -8,7 +8,8 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  stylistDetails: Stylist[] = [];
+  stylistDetails = [];
+  OriginalDetails = [];
   need;
   type;
   showMessage;
@@ -18,16 +19,33 @@ export class SearchResultsComponent implements OnInit {
   location;
   skill;
   name;
-
+  charlName;
+  define;
+  filter;
+  add;
   countResults;
+
+  selected;
+  selectedData;
 
   // onNotifyClicked(message:string): void{
   //   this.showMessage = message;
   // }
 
-  onClickLocFiltered(): void {
+  // onSelect1(val) {
+  //   console.log(val)
+  //   this.stylistDetails
+  // }
 
+  onSelect2(val) {
+    console.log(val);
+    console.log(this.OriginalDetails);
+    this.stylistDetails = this.OriginalDetails.filter(x => {
+      console.log(x.address_line_1);
+      return x.address_line_1 === val;
+    });
   }
+
 
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
 
@@ -50,6 +68,7 @@ export class SearchResultsComponent implements OnInit {
         this.http.get<any>('/api/stylist_db/stylist_details/' + this.id).subscribe(
           data => {
             this.stylistDetails = data;
+            this.OriginalDetails = data;
             console.log(this.stylistDetails);
           }
         );
@@ -59,37 +78,46 @@ export class SearchResultsComponent implements OnInit {
         this.http.get<any>('/api/stylist_db/stylist_details').subscribe(
           data => {
             this.stylistDetails = data;
+            this.OriginalDetails = data;
             this.countResults = this.stylistDetails.length;
           }
         );
       }
 
-      if (value.location){
+      if (value.location) {
         this.location = value.location;
         this.http.get<any>('/api/stylist_db/stylist_details/bylocation/' + this.location).subscribe(
           data => {
             this.stylistDetails = data;
+            this.OriginalDetails = data;
             this.countResults = this.stylistDetails.length;
+            this.define = 'location - ' + this.location;
           }
         );
       }
 
-      if (value.skill){
+      if (value.skill) {
         this.skill = value.skill;
         this.http.get<any>('/api/stylist_db/stylist_details/bySkill/' + this.skill).subscribe(
           data => {
             this.stylistDetails = data;
+            this.OriginalDetails = data;
             this.countResults = this.stylistDetails.length;
+            this.define = 'location wise';
+            this.define = 'Skill - ' + this.skill;
           }
         );
       }
 
-      if (value.name){
+      if (value.name) {
         this.name = value.name;
         this.http.get<any>('/api/stylist_db/stylist_details/byName/' + this.name).subscribe(
           data => {
             this.stylistDetails = data;
+            this.OriginalDetails = data;
+            console.log('Print my name :' + this.charlName);
             this.countResults = this.stylistDetails.length;
+            this.define = 'Name - ' + this.name;
           }
         );
       }
@@ -105,8 +133,4 @@ export class SearchResultsComponent implements OnInit {
     this.showMessage = message;
     console.log('Charles' + this.showMessage);
   }
-}
-
-interface Stylist {
-
 }

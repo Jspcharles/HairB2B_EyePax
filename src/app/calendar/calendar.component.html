@@ -38,7 +38,7 @@
                       <ng-template #item>
                         <div style="min-width: 200px;" class="items" *ngFor="let date of days__">
                           <div>
-                            <button class="w3-button" (click)="toggleShow(date.date)" [ngClass]="{'btn-NotAvailable': date.date.format('D') === '21' || date.date.format('D') === '25'}" [disabled]="date.date.format('D') === '21' || date.date.format('D') === '25'">
+                            <button class="w3-button" (click)="toggleShow(date.date)" [ngClass]="{'btn-NotAvailable': date.date.format('D') === '6' || date.date.format('D') === '8'}" [disabled]="date.date.format('D') === '6' || date.date.format('D') === '8'">
 
                               <div>
                                 <!--Hidden and show when Select those dates-->
@@ -109,7 +109,7 @@
                       </tr>
                       <tr>
                         <td></td>
-                        <td><button type="button" class="btn btn-success">Book Now</button></td>
+                        <td><button type="button" class="btn btn-success" routerLink="/paypal/">Book Now</button></td>
                       </tr>
                       <br>
                     </table>

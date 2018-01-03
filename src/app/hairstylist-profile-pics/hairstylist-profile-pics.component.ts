@@ -9,10 +9,11 @@ export class HairstylistProfilePicsComponent implements OnInit {
   pics: any[] = [];
   constructor() {
     this.pics = [
-      { name: 'assets/images/image1.jpg' },
-      { name: 'assets/images/image2.jpg' },
-      { name: 'assets/images/image3.jpg' },
-      { name: 'assets/images/image4.jpg' },
+      { name: '../../assets/images/imgs/p1.jpg' },
+      { name: '../../assets/images/imgs/p2.jpg' },
+      { name: '../../assets/images/imgs/p3.jpg' },
+      { name: '../../assets/images/imgs/p4.jpg' },
+      { name: '../../assets/images/imgs/p5.jpg' },
     ];
   }
 
