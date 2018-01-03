@@ -47,8 +47,8 @@
                                 ue"></i></div>-->
 
                                 <!--Show and color indicate when dates selected-->
-                                <button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot1}">Booked</button>
-                                <button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot2}">Booked</button>
+                                <button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot1, 'btn-NotAvailable': date.date.format('D') === '10'}" [disabled]="date.date.format('D') === '10'">Booked</button>
+                                <button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot2, 'btn-NotAvailable': date.date.format('D') === '12'}" [disabled]="date.date.format('D') === '12'">Booked</button>
                               </div>
                               <span class="pr-day pr-month">
                                 {{date.date.format('MMMM')}}<br>
@@ -60,6 +60,7 @@
                                 {{date.date.format('dddd')}}<br>
                               </span>
                             </button>
+
                           </div>
                         </div>
                       </ng-template>

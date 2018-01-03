@@ -31,6 +31,9 @@ export class SearchResultsComponent implements OnInit {
   // onNotifyClicked(message:string): void{
   //   this.showMessage = message;
   // }
+  onSelect(){
+    this.stylistDetails = this.OriginalDetails;
+  }
 
   onSelect1(val) {
     console.log(val)
@@ -39,13 +42,14 @@ export class SearchResultsComponent implements OnInit {
       for (var i=0; i<x.skill.length; i++){
         // console.log(x.skill[i] + ' ' + val);
         if (x.skill[i] === val){
-          console.log('---------------------');
-          console.log('Yeah Matched');
-          console.log('---------------------');
           return x.skill[i] === val;
         }
       }
     })
+  }
+
+  onSelect3(val){
+    console.log(val);
   }
 
   onSelect2(val) {

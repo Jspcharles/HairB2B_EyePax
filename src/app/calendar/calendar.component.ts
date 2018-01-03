@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import _date = moment.unitOfTime._date;
 import {any} from 'codelyzer/util/function';
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-calendar',
@@ -17,10 +20,18 @@ export class CalendarComponent implements OnInit {
   bookDate;
   finalBookDate = '25';
   slotCost: any[] = [];
-  cost1: 100;
+  cost1;
   cost2;
   days__: Day[] = [];
   total;
+
+  busy_date_1;
+  busy_date_2;
+  time_slot_busy_date_1
+  time_slot_busy_date_2
+  day_busy;
+
+  id;
 
   selectedDate: any;
 
@@ -65,7 +76,7 @@ export class CalendarComponent implements OnInit {
       }
     }
     this.sessionDate.push(this.bookDate);
-    this.slotCost.push(100);
+    this.slotCost.push(this.cost1);
   }
 
   makeBooking2() {
@@ -79,7 +90,7 @@ export class CalendarComponent implements OnInit {
       }
     }
     this.sessionDate.push(this.bookDate);
-    this.slotCost.push(200);
+    this.slotCost.push(this.cost2);
   }
 
   totalAmount() {
@@ -99,7 +110,8 @@ export class CalendarComponent implements OnInit {
   //   }
   // }
 
-  constructor() {
+  constructor(private  route: ActivatedRoute, private http: HttpClient) {
+
 
     // this.disDate = ['20','55'];
 
@@ -110,6 +122,37 @@ export class CalendarComponent implements OnInit {
     //   return this.acer;
     // }
 
+    this.route.params.subscribe(value => {
+      this.id = value.id;
+      console.log(this.id);
+      this.http.get<any>('/api/stylist_db/stylist_details/'+this.id).subscribe(
+        data => {
+          this.cost1 = data[0].mrng_cost;
+          this.cost2 = data[0].evng_cost;
+          console.log(this.cost1);
+          console.log(this.cost2);
+        }
+      );
+    })
+
+    this.route.params.subscribe(value => {
+      this.id = value.id;
+      console.log(this.id);
+      this.http.get<any>('/api/stylist_db/stylist_details/calendar/'+this.id).subscribe(
+        data => {
+          this.busy_date_1 = data[0].busy_date_1;
+          this.busy_date_2 = data[0].busy_date_2;
+          this.time_slot_busy_date_1 = data[0].time_slot_busy_date_1;
+          this.time_slot_busy_date_2 = data[0].time_slot_busy_date_2;
+          this.day_busy = data[0].day_busy;
+          console.log(this.busy_date_1);
+          console.log(this.busy_date_2);
+          console.log(this.time_slot_busy_date_1);
+          console.log(this.time_slot_busy_date_2);
+          console.log(this.day_busy);
+        }
+      );
+    })
   }
 
   ngOnInit() {
