@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-hairstylist-profile-pics',
@@ -6,15 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hairstylist-profile-pics.component.css']
 })
 export class HairstylistProfilePicsComponent implements OnInit {
-  pics: any[] = [];
-  constructor() {
-    this.pics = [
-      { name: '../../assets/images/imgs/p1.jpg' },
-      { name: '../../assets/images/imgs/p2.jpg' },
-      { name: '../../assets/images/imgs/p3.jpg' },
-      { name: '../../assets/images/imgs/p4.jpg' },
-      { name: '../../assets/images/imgs/p5.jpg' },
-    ];
+
+  id;
+  images = [];
+
+  constructor(private  route: ActivatedRoute, private http: HttpClient) {
+    this.route.params.subscribe(value => {
+      this.id = value.id;
+      console.log(this.id);
+      this.http.get<any>('/api/stylist_db/stylist_details/gallery/'+ this.id).subscribe(
+        data => {
+          this.images = data[0].gallery;
+          console.log(this.images);
+        }
+      );
+    })
   }
 
   ngOnInit() {

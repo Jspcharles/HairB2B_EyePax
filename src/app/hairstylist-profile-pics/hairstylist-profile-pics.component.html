@@ -1,29 +1,41 @@
-<div class="container">
-<div ng2-carouselamos
-     [items]="pics"
-     [width]="800"
-     [$prev]="prev"
-     [$next]="next"
-     [$item]="item">
-</div>
 
-<ng-template class="pr-cal-head-left" #prev>
-  <button class="btn btn-default pr-btn-calendar">
-    <i class="fa fa-caret-left"></i>
-  </button>
-</ng-template>
+<!--<div ng2-carouselamos-->
+     <!--[items]="pics"-->
+     <!--[width]="800"-->
+     <!--[$prev]="prev"-->
+     <!--[$next]="next"-->
+     <!--[$item]="item">-->
+<!--</div>-->
 
-<ng-template class="pr-cal-head-right" #next>
-  <button class="btn btn-default pr-btn-calendar">
-    <i class="fa fa-caret-right"></i>
-  </button>
-</ng-template>
+<!--<ng-template class="pr-cal-head-left" #prev>-->
+  <!--<button class="btn btn-default pr-btn-calendar">-->
+    <!--<i class="fa fa-caret-left"></i>-->
+  <!--</button>-->
+<!--</ng-template>-->
 
-<div data-interval="500">
-<ng-template #item >
-  <div style="min-width: 300px;" class="items" *ngFor="let pictures of pics">
-    <img [src]="pictures.name">
-  </div>
-</ng-template>
-</div>
-</div>
+<!--<ng-template class="pr-cal-head-right" #next>-->
+  <!--<button class="btn btn-default pr-btn-calendar">-->
+    <!--<i class="fa fa-caret-right"></i>-->
+  <!--</button>-->
+<!--</ng-template>-->
+
+<!--<div data-interval="500">-->
+<!--<ng-template #item >-->
+  <!--<div style="min-width: 300px;" class="items" *ngFor="let pictures of pics">-->
+    <!--<img [src]="pictures.name">-->
+  <!--</div>-->
+<!--</ng-template>-->
+<!--</div>-->
+
+
+
+  <section>
+    <div class="col-md-4 col-sm-6 co-xs-12 gal-item" *ngFor="let img of images">
+      <div class="box">
+        <a href="#" data-toggle="modal">
+          <img src="data:image/jpg;base64,{{img}}">
+        </a>
+      </div>
+    </div>
+  </section>
+

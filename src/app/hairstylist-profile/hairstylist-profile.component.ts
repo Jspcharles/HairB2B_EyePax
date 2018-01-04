@@ -30,7 +30,6 @@ export class HairstylistProfileComponent implements OnInit {
 
   }
 
-
   ngOnInit() {
     this.route.params.subscribe(value => {
       this.id = value.id;
@@ -50,7 +49,6 @@ export class HairstylistProfileComponent implements OnInit {
           this.telephone = data[0].telephone;
           console.log(this.skills);
         }
-
       );
     })
   }
