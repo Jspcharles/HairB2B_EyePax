@@ -22,11 +22,15 @@ import { TestAlComponent } from './test-al/test-al.component';
 import { BookingShowsComponent } from './booking-shows/booking-shows.component';
 import { HairstylistProfilePicsComponent } from './hairstylist-profile-pics/hairstylist-profile-pics.component';
 import {HttpClientModule} from '@angular/common/http';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AdvancedFilterComponent } from './advanced-filter/advanced-filter.component';
 import { PaypalComponent } from './paypal/paypal.component';
-
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import {MatNativeDateModule} from '@angular/material';
 
 const routes: Routes = [
   {
@@ -72,10 +76,16 @@ const routes: Routes = [
     FormsModule,
     MatButtonModule, MatCheckboxModule,
     NgbModule.forRoot(),
-
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [ { provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
+
 })
 export class AppModule {
 }

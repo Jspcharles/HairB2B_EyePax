@@ -7,6 +7,9 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']
 })
+
+
+
 export class SearchResultsComponent implements OnInit {
   stylistDetails = [];
   OriginalDetails = [];
@@ -24,6 +27,8 @@ export class SearchResultsComponent implements OnInit {
   filter;
   add;
   countResults;
+  sliderValue1;
+  sliderValue2;
 
   selected;
   selectedData;
@@ -33,6 +38,7 @@ export class SearchResultsComponent implements OnInit {
   // }
   onSelect(){
     this.stylistDetails = this.OriginalDetails;
+    this.countResults = this.stylistDetails.length;
   }
 
   onSelect1(val) {
@@ -46,10 +52,15 @@ export class SearchResultsComponent implements OnInit {
         }
       }
     })
+    this.countResults = this.stylistDetails.length;
   }
 
-  onSelect3(val){
-    console.log(val);
+  onInputChange1(event: any) {
+    this.sliderValue1 = event.value;
+  }
+
+  onInputChange2(event: any) {
+    this.sliderValue2 = event.value;
   }
 
   onSelect2(val) {
@@ -59,8 +70,29 @@ export class SearchResultsComponent implements OnInit {
       console.log(x.address_line_1);
       return x.address_line_1 === val;
     });
+    this.countResults = this.stylistDetails.length;
   }
 
+  onSelect3(val){
+    console.log(val);
+    this.stylistDetails = this.OriginalDetails.filter(x => {
+      return x.mrng_cost < val;
+    })
+    this.countResults = this.stylistDetails.length;
+  }
+
+  onSelect4(val){
+    console.log(val);
+    this.stylistDetails = this.OriginalDetails.filter(x => {
+      return x.evng_cost < val;
+    })
+    this.countResults = this.stylistDetails.length;
+  }
+
+  change(){
+    this.sliderValue1 = 0;
+    this.sliderValue2 = 0;
+  }
 
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
 

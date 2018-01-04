@@ -35,3 +35,18 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
   color: red;
 }
 
+mat-slider {
+  width: 200px;
+}
+
+.sliderWidth{
+  width: 200px;
+  padding-left: 50px;
+  padding-top: 20px;
+}
+
+.pr-hero-black-holder {
+  opacity: revert;
+  border: #111111 solid 1px;
+}
+

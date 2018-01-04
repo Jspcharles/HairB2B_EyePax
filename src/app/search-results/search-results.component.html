@@ -4,7 +4,7 @@
     <h2 class="lead"><strong class="text-danger">{{countResults}}</strong> Results were found <strong class="text-danger">{{define}}</strong></h2>
 
     <div class="container-fluid">
-      <div class="d-flex">
+      <div class="d-flex pr-hero-black-holder">
           <!--<div class="" style="padding-left: 10px">-->
             <!--<label class="filter-col" style="margin-right:0;" for="pref-perpage">I need a</label>-->
             <!--<select id="pref-perpage" class="form-control">-->
@@ -13,30 +13,68 @@
               <!--<option value="Assistant">Assistant</option>-->
             <!--</select>-->
           <!--</div> &lt;!&ndash; form group [rows] &ndash;&gt;-->
-          <div class="" style="padding-left: 10px">
-            <label class="filter-col" style="margin-right:0;">Job location</label>
-            <select id="pref-perpage-2" class="form-control" [(ngModel)]="selected2" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect2(selected2)">
-              <option value="Sydney" selected>Sydney</option>
-              <option value="Melbourne">Melbourne</option>
-              <option value="Brisbane">Brisbane</option>
-              <option value="Perth">Perth</option>
-              <option value="Adelaide">Adelaide</option>
-              <option value="Gold Coast">Gold Coast</option>
-              <option value="Newcastle">Newcastle</option>
-              <option value="Canberra">Canberra</option>
-            </select>
-          </div><!-- form group [search] -->
-          <div class="" style="padding-left: 10px">
-            <label class="filter-col" style="margin-right:0;">Skills Required</label>
-            <select id="pref-perpage-3" class="form-control" [(ngModel)]="selected1" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect1(selected1)">
-              <option value="Advanced colouring" selected>Advanced colouring</option>
-              <option value="Colour correction">Colour correction</option>
-              <option value="Hair painting">Hair painting</option>
-              <option value="Bridal">Bridal</option>
-            </select>
-          </div> <!-- form group [order by] -->
-          <div style="padding-top: 2px; padding-left: 25px">
-            <button type="button" class="btn btn-default" (click)="onSelect()">Clear Filter</button>
+          <div class="sliderWidth">
+            <div class="" style="padding-left: 10px">
+              <label class="filter-col" style="margin-right:0;">Job location</label>
+              <select id="pref-perpage-2" class="form-control" [(ngModel)]="selected2" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect2(selected2)">
+                <option value="Sydney" selected>Sydney</option>
+                <option value="Me lbourne">Melbourne</option>
+                <option value="Brisbane">Brisbane</option>
+                <option value="Perth">Perth</option>
+                <option value="Adelaide">Adelaide</option>
+                <option value="Gold Coast">Gold Coast</option>
+                <option value="Newcastle">Newcastle</option>
+                <option value="Canberra">Canberra</option>
+              </select>
+            </div><!-- form group [search] -->
+            <div class="" style="padding-left: 10px">
+              <label class="filter-col" style="margin-right:0;">Skills Required</label>
+              <select id="pref-perpage-3" class="form-control" [(ngModel)]="selected1" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect1(selected1)">
+                <option value="Advanced colouring" selected>Advanced colouring</option>
+                <option value="Colour correction">Colour correction</option>
+                <option value="Hair painting">Hair painting</option>
+                <option value="Bridal">Bridal</option>
+              </select>
+            </div> <!-- form group [order by] -->
+          </div>
+
+          <div class="sliderWidth">
+            <div class="">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker1" placeholder="Choose a Starting date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="Choose a Ending date">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+          <div class="sliderWidth">
+            <div class="">
+              <label>Morning Cost - </label>
+              <label class="filter-col" style="margin-right:0;">{{sliderValue1}}</label>
+              <mat-slider min="10" max="500" step="5" data-interval="5" [(ngModel)]="sliderValue1" (ngModelChange)="onSelect3(sliderValue1)" (input)="onInputChange1($event)"></mat-slider>
+            </div>
+
+            <div class="">
+              <label>Evening Cost - </label>
+              <label class="filter-col" style="margin-right:0;">{{sliderValue2}}</label>
+              <mat-slider min="10" max="500" step="5" data-interval="5" [(ngModel)]="sliderValue2" (ngModelChange)="onSelect4(sliderValue2)" (input)="onInputChange2($event)"></mat-slider>
+            </div>
+          </div>
+
+
+          <div class="sliderWidth" style="padding-left: 150px">
+            <div class="">
+              <button type="button" class="btn btn-default" (click)="onSelect() ; change()">Clear Filter</button>
+            </div>
           </div>
       </div>
     </div>
