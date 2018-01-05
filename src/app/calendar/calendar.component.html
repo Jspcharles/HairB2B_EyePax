@@ -94,14 +94,14 @@
                   <div class="container slot toggle-panel" *ngIf="selectedDate && selectedDate === date.date">
                     <div>
                       <button type="button" class="w3-button-slot w3-width"
-                              [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot1}"
+                              [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot1, 'btn-NotAvailable' : date.alreadyBooked1}"
                               (click)="slotShow1(date) ; makeBooking1() ; totalAmount()">8PM - 12PM
                       </button>
                     </div>
                     <br>
                     <div>
                       <button type="button" class="w3-button-slot w3-width"
-                              [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot2}"
+                              [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot2, 'btn-NotAvailable' : date.alreadyBooked2}"
                               (click)="slotShow2(date) ; makeBooking2(); totalAmount()">1PM - 5PM
                       </button>
                     </div>

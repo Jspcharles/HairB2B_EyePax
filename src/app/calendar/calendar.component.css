@@ -82,6 +82,7 @@ td{
 
 .btn-NotAvailable{
   background-color: #c33c3a;
+  pointer-events: none;
 }
 
 .makeBook{
