@@ -25,11 +25,15 @@ export class CalendarComponent implements OnInit {
   days__: Day[] = [];
   total;
 
-  busy_date_1;
-  busy_date_2;
-  time_slot_busy_date_1
-  time_slot_busy_date_2
+  busy_dates_received = false;
+
+  // busy_date_1;
+  // busy_date_2;
+  // time_slot_busy_date_1
+  // time_slot_busy_date_2
   day_busy;
+
+  busy_date:busyDate[] = [];
 
   id;
 
@@ -135,40 +139,68 @@ export class CalendarComponent implements OnInit {
       );
     })
 
+    // this.route.params.subscribe(value => {
+    //   this.id = value.id;
+    //   console.log(this.id);
+    //   this.http.get<any>('/api/stylist_db/stylist_details/calendar/'+this.id).subscribe(
+    //     data => {
+    //       this.busy_date_1 = data[0].busy_date_1;
+    //       this.busy_date_2 = data[0].busy_date_2;
+    //       this.time_slot_busy_date_1 = data[0].time_slot_busy_date_1;
+    //       this.time_slot_busy_date_2 = data[0].time_slot_busy_date_2;
+    //       this.day_busy = data[0].day_busy;
+    //       console.log(this.busy_date_1);
+    //       console.log(this.busy_date_2);
+    //       console.log(this.time_slot_busy_date_1);
+    //       console.log(this.time_slot_busy_date_2);
+    //       console.log(this.day_busy);
+    //     }
+    //   );
+    // })
+
     this.route.params.subscribe(value => {
       this.id = value.id;
       console.log(this.id);
-      this.http.get<any>('/api/stylist_db/stylist_details/calendar/'+this.id).subscribe(
+      this.http.get<any>('/api/stylist_db/stylist_details/busy_date/'+this.id).subscribe(
         data => {
-          this.busy_date_1 = data[0].busy_date_1;
-          this.busy_date_2 = data[0].busy_date_2;
-          this.time_slot_busy_date_1 = data[0].time_slot_busy_date_1;
-          this.time_slot_busy_date_2 = data[0].time_slot_busy_date_2;
-          this.day_busy = data[0].day_busy;
-          console.log(this.busy_date_1);
-          console.log(this.busy_date_2);
-          console.log(this.time_slot_busy_date_1);
-          console.log(this.time_slot_busy_date_2);
-          console.log(this.day_busy);
+          this.busy_date = data;
+          console.log(this.busy_date);
+          // this.busy_dates_received = true;
+          for (let i = 0; i < 30; i++) {
+            this.day[i] = this.getDate(i);
+            this.days__.push({date: this.day[i], alreadyBooked1: this.isBusySlot1(this.day[i]), alreadyBooked2: this.isBusySlot2(this.day[i]), showSlot1: false, showSlot2: false});
+          }
         }
       );
     })
+
+  }
+
+  isBusySlot1(day){
+    for(let i = 0; i < this.busy_date.length; i++){
+      if(this.busy_date[i].busy_date === day.format('YYYY-MM-DD') && this.busy_date[i].time_slot === 'Morning'){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  isBusySlot2(day){
+    for(let i = 0; i < this.busy_date.length; i++){
+      if(this.busy_date[i].busy_date === day.format('YYYY-MM-DD') && this.busy_date[i].time_slot === 'Evening'){
+        return true;
+      }
+    }
+    return false;
   }
 
   ngOnInit() {
-
-    for (let i = 0; i < 30; i++) {
-      this.day[i] = this.getDate(i);
-      this.days__.push({date: this.day[i], showSlot1: false, showSlot2: false});
-    }
 
   }
 
   getDate(num) {
     return moment().add(num, 'days');
   }
-
-
 
 }
 
@@ -182,4 +214,12 @@ interface Day {
   date: any;
   showSlot1: boolean;
   showSlot2: boolean;
+  alreadyBooked1: boolean;
+  alreadyBooked2: boolean;
+}
+
+interface busyDate {
+  id: number;
+  busy_date: string;
+  time_slot: string;
 }

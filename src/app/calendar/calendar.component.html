@@ -36,19 +36,38 @@
                 </ng-template>
                     <div class="pr-cal-date">
                       <ng-template #item>
-                        <div style="min-width: 200px;" class="items" *ngFor="let date of days__">
-                          <div>
-                            <button class="w3-button" (click)="toggleShow(date.date)" [ngClass]="{'btn-NotAvailable': date.date.format('D') === '6' || date.date.format('D') === '8'}" [disabled]="date.date.format('D') === '6' || date.date.format('D') === '8'">
+                        <!--<div style="min-width: 200px;" class="items" *ngFor="let date of days__">-->
+                          <!--<div >-->
+                            <!--<button class="w3-button" (click)="toggleShow(date.date)" *ngIf="date.date.format('D') != 10">-->
 
+                              <!--<div>-->
+                                <!--&lt;!&ndash;Hidden and show when Select those dates&ndash;&gt;-->
+                                <!--<button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot1, 'btn-NotAvailable': date.date.format('D') === '10'}" [disabled]="date.date.format('D') === '10'">Booked</button>-->
+                                <!--<button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot2, 'btn-NotAvailable': date.date.format('D') === '12'}" [disabled]="date.date.format('D') === '12'">Booked</button>-->
+                              <!--</div>-->
+                              <!--<span class="pr-day pr-month">-->
+                                <!--{{date.date.format('MMMM')}}<br>-->
+                              <!--</span>-->
+                              <!--<span class="pr-date">-->
+                                <!--{{date.date.format('D')}}<br>-->
+                              <!--</span>-->
+                              <!--<span class="pr-day">-->
+                                <!--{{date.date.format('dddd')}}<br>-->
+                              <!--</span>-->
+                            <!--</button>-->
+                          <!--</div>-->
+                        <!--</div>-->
+
+                        <div style="min-width: 200px;" class="items" *ngFor="let date of days__">
+                          <div >
+                            <button class="w3-button" (click)="toggleShow(date.date)">
                               <div>
                                 <!--Hidden and show when Select those dates-->
-                                <!--<div>Morning<i *ngIf="date.showSlot1" class="fa fa-check" aria-hidden="true" ng-></i></div>-->
-                                <!--<div>Evening<i *ngIf=" date.showSlot2" class="fa fa-check" aria-hidden="tr
-                                ue"></i></div>-->
+                                <!--<button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot1, 'btn-NotAvailable': date.date.format('D') === '10'}" [disabled]="date.date.format('D') === '10'">Booked</button>-->
+                                <!--<button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot2, 'btn-NotAvailable': date.date.format('D') === '12'}" [disabled]="date.date.format('D') === '12'">Booked</button>-->
 
-                                <!--Show and color indicate when dates selected-->
-                                <button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot1, 'btn-NotAvailable': date.date.format('D') === '10'}" [disabled]="date.date.format('D') === '10'">Booked</button>
-                                <button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot2, 'btn-NotAvailable': date.date.format('D') === '12'}" [disabled]="date.date.format('D') === '12'">Booked</button>
+                                <button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot1 , 'btn-NotAvailable': date.alreadyBooked1}">Booked</button>
+                                <button type="button" class="w3-width-book-slot" [ngClass]="{'btn-clicked': selectedDate && date.showSlot2 , 'btn-NotAvailable': date.alreadyBooked2}">Booked</button>
                               </div>
                               <span class="pr-day pr-month">
                                 {{date.date.format('MMMM')}}<br>
@@ -60,7 +79,6 @@
                                 {{date.date.format('dddd')}}<br>
                               </span>
                             </button>
-
                           </div>
                         </div>
                       </ng-template>
@@ -75,7 +93,6 @@
                 <div class="pr-cal-body" *ngFor="let date of days__">
                   <div class="container slot toggle-panel" *ngIf="selectedDate && selectedDate === date.date">
                     <div>
-
                       <button type="button" class="w3-button-slot w3-width"
                               [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot1}"
                               (click)="slotShow1(date) ; makeBooking1() ; totalAmount()">8PM - 12PM
@@ -84,8 +101,7 @@
                     <br>
                     <div>
                       <button type="button" class="w3-button-slot w3-width"
-                              [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot2,
-                              'makeBook': selectedDate && selectedDate===date.date && date.showSlot2}"
+                              [ngClass]="{'btn-clicked': selectedDate && selectedDate===date.date && date.showSlot2}"
                               (click)="slotShow2(date) ; makeBooking2(); totalAmount()">1PM - 5PM
                       </button>
                     </div>

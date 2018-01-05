@@ -85,9 +85,9 @@
   <section class="col-xs-12 col-sm-6 col-md-12">
     <article class="search-result row" *ngFor="let list of stylistDetails">
       <div class="col-xs-12 col-sm-12 col-md-3">
-        <a href="" class="thumbnail">
+        <a href="" class="thumbnail" routerLink="/hairstylist-pro/{{list.id}}">
           <!--<img src="../../assets/images/profile_img.png"/>-->
-          <img src="data:image/jpg;base64,{{list.profile_pic}}" class="pro_img">
+          <img src="data:image/jpg;base64,{{list.profile_pic}}" class="pro_img" >
         </a>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-2">
