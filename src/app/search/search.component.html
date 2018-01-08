@@ -32,11 +32,8 @@
               <!--<button type="button" class="btn btn-danger" routerLink="/search" [queryParams]="{'id':query}">Find Here</button>-->
             <!--</div>-->
 
-            <div *ngIf="qwe === 'all'">
-              <div>
-                <input type="text" class="search-query form-control" [(ngModel)]=query value="all" />
-              </div>
-              <button type="button" class="btn btn-danger" routerLink="/search" [queryParams]="{'all':query}">Find Here</button>
+            <div *ngIf="qwe === 'Find all the available Hairstylists'">
+              <button type="button" class="btn btn-danger" routerLink="/search" [queryParams]="{'all':'Find All the Available Stylists'}">Find Here</button>
             </div>
 
             <div *ngIf="qwe === 'Skill'">

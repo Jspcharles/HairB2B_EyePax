@@ -9,10 +9,8 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  need: String[] = ['Name', 'Skill', 'Location','all'];
-  qwe = 'all';
-
-
+  need: String[] = ['Name', 'Skill', 'Location','Find all the available Hairstylists'];
+  qwe = 'Find all the available Hairstylists';
 
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 

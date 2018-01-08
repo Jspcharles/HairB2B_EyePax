@@ -129,7 +129,7 @@ export class SearchResultsComponent implements OnInit {
         );
       }
 
-      if (value.all == 'All') {
+      if (value.all == 'Find All the Available Stylists') {
         this.http.get<any>('/api/stylist_db/stylist_details').subscribe(
           data => {
             this.stylistDetails = data;
