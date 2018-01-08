@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-search-results',
@@ -13,36 +14,26 @@ import {HttpClient} from '@angular/common/http';
 export class SearchResultsComponent implements OnInit {
   stylistDetails = [];
   OriginalDetails = [];
-  need;
   type;
   showMessage;
-  hname;
-  preferred_locations = [];
   id;
   location;
   skill;
   name;
-  charlName;
   define;
-  filter;
-  add;
   countResults;
   sliderValue1;
   sliderValue2;
+  pickDate;
 
-  selected;
-  selectedData;
-
-  // onNotifyClicked(message:string): void{
-  //   this.showMessage = message;
-  // }
+  //function for clear the filter
   onSelect(){
     this.stylistDetails = this.OriginalDetails;
     this.countResults = this.stylistDetails.length;
   }
 
   onSelect1(val) {
-    console.log(val)
+    // console.log(val)
     this.stylistDetails = this.OriginalDetails.filter(x => {
 
       for (var i=0; i<x.skill.length; i++){
@@ -51,7 +42,7 @@ export class SearchResultsComponent implements OnInit {
           return x.skill[i] === val;
         }
       }
-    })
+    });
     this.countResults = this.stylistDetails.length;
   }
 
@@ -64,17 +55,17 @@ export class SearchResultsComponent implements OnInit {
   }
 
   onSelect2(val) {
-    console.log(val);
-    console.log(this.OriginalDetails);
+    // console.log(val);
+    // console.log(this.OriginalDetails);
     this.stylistDetails = this.OriginalDetails.filter(x => {
-      console.log(x.address_line_1);
+      // console.log(x.address_line_1);
       return x.address_line_1 === val;
     });
     this.countResults = this.stylistDetails.length;
   }
 
   onSelect3(val){
-    console.log(val);
+    // console.log(val);
     this.stylistDetails = this.OriginalDetails.filter(x => {
       return x.mrng_cost < val;
     })
@@ -82,7 +73,7 @@ export class SearchResultsComponent implements OnInit {
   }
 
   onSelect4(val){
-    console.log(val);
+    // console.log(val);
     this.stylistDetails = this.OriginalDetails.filter(x => {
       return x.evng_cost < val;
     })
@@ -94,13 +85,30 @@ export class SearchResultsComponent implements OnInit {
     this.sliderValue2 = 0;
   }
 
+  onPickDate(val){
+      this.pickDate = moment(val).format('YYYY-MM-DD');
+    this.stylistDetails = this.OriginalDetails.filter(x => {
+
+      for (var i=0; i<x.busy_date.length; i++){
+        console.log(moment(x.busy_date[i]).format('YYYY-MM-DD') + ' ' + this.pickDate);
+        // console.log(x.busy_date[i] + ' ' + this.pickDate);
+        if (moment(x.busy_date[i]).format('YYYY-MM-DD') === this.pickDate){
+          return false;
+        }
+
+      }
+      return true;
+    });
+    this.countResults = this.stylistDetails.length;
+  }
+
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
 
     // this.http.get<any>('/api/stylist_db/stylist_details').subscribe(
     //   data => {
     //     this.stylistDetails = data;
     //     // console.log(this.stylistName);
-    //     // console.log(this.stylistName.length);
+    //     // console.log(this.stylistName.length)  ;
     //     this.countResults = this.stylistDetails.length;
     //   }
     // );
@@ -111,12 +119,12 @@ export class SearchResultsComponent implements OnInit {
     this.route.queryParams.subscribe(value => {
       if (value.id) {
         this.id = value.id;
-        console.log(this.id);
+        // console.log(this.id);
         this.http.get<any>('/api/stylist_db/stylist_details/' + this.id).subscribe(
           data => {
             this.stylistDetails = data;
             this.OriginalDetails = data;
-            console.log(this.stylistDetails);
+            // console.log(this.stylistDetails);
           }
         );
       }
@@ -162,7 +170,7 @@ export class SearchResultsComponent implements OnInit {
           data => {
             this.stylistDetails = data;
             this.OriginalDetails = data;
-            console.log('Print my name :' + this.charlName);
+            // console.log('Print my name :' + this.charlName);
             this.countResults = this.stylistDetails.length;
             this.define = 'Name - ' + this.name;
           }
@@ -178,6 +186,6 @@ export class SearchResultsComponent implements OnInit {
 
   onFiltered(message: string): void {
     this.showMessage = message;
-    console.log('Charles' + this.showMessage);
+    // console.log('Charles' + this.showMessage);
   }
 }

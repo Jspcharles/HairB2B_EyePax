@@ -40,20 +40,14 @@
 
           <div class="sliderWidth">
             <div class="">
+              <label class="filter-col" style="margin-right:0;">Choose your session date</label>
               <mat-form-field>
-                <input matInput [matDatepicker]="picker1" placeholder="Choose a Starting date">
+                <input matInput [matDatepicker]="picker1" placeholder="Availability date" [(ngModel)] = "pickDate" (ngModelChange)="onPickDate(pickDate)">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field>
-                <input matInput [matDatepicker]="picker2" placeholder="Choose a Ending date">
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-              </mat-form-field>
-            </div>
 
+            </div>
           </div>
 
           <div class="sliderWidth">

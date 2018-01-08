@@ -10,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   need: String[] = ['Name', 'Skill', 'Location','all'];
-  qwe = 'Name';
+  qwe = 'all';
 
 
 
@@ -33,21 +33,21 @@ export class SearchComponent implements OnInit {
       this.http.get<any>('/api/stylist_db/stylist_details/names').subscribe(
         data => {
           this.stylist_Names = data;
-          console.log(this.stylist_Names);
+          // console.log(this.stylist_Names);
         }
       );
 
     this.http.get<any>('/api/stylist_db/stylist_details/locations').subscribe(
       data => {
         this.stylist_Locations = data;
-        console.log(this.stylist_Locations);
+        // console.log(this.stylist_Locations);
       }
     );
 
     this.http.get<any>('/api/stylist_db/stylist_details/skills').subscribe(
       data => {
         this.stylist_Skills = data;
-        console.log(this.stylist_Skills);
+        // console.log(this.stylist_Skills);
       }
     );
   }
