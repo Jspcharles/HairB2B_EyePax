@@ -13,6 +13,7 @@ import * as moment from 'moment';
 
 export class SearchResultsComponent implements OnInit {
   stylistDetails = [];
+
   OriginalDetails = [];
   type;
   showMessage;
@@ -22,28 +23,117 @@ export class SearchResultsComponent implements OnInit {
   name;
   define;
   countResults;
+
+  pickDate;
+
+  a: boolean = false;
+  b: boolean = false;
+  c: boolean = false;
+  d: boolean = false;
+  e: boolean = false;
+
+  selected1;
+  selected2;
   sliderValue1;
   sliderValue2;
-  pickDate;
+
 
   //function for clear the filter
   onSelect(){
     this.stylistDetails = this.OriginalDetails;
     this.countResults = this.stylistDetails.length;
+    this.a = false;
+    this.b = false;
+    this.c = false;
+    this.d = false;
+    this.e = false;
+    this.selected1 = "";
+    this.selected2 = "";
+  }
+
+  filterAll(){
+    if (this.selected1 === ""){
+      this.a = false;
+    }
+
+    if (this.selected2 === ""){
+      this.b = false;
+    }
+
+    if (this.a === true){
+      this.stylistDetails = this.stylistDetails.filter(x =>{
+        return x.address_line_1 === this.selected1;
+      })
+    }
+
+    if (this.b === true){
+      this.stylistDetails = this.stylistDetails.filter(x => {
+        for (var i=0; i<x.skill.length; i++){
+          // console.log(x.skill[i] + ' ' + val);
+          if (x.skill[i] === this.selected2){
+            return x.skill[i] === this.selected2;
+          }
+        }
+      });
+    }
+
+    if (this.c === true){
+      this.stylistDetails = this.stylistDetails.filter(x => {
+        return x.mrng_cost <= this.sliderValue1;
+      })
+    }
+
+    if (this.d === true){
+      this.stylistDetails = this.stylistDetails.filter(x => {
+        return x.mrng_cost <= this.sliderValue2;
+      })
+    }
+
+    if (this.e === true){
+      this.stylistDetails = this.stylistDetails.filter(x => {
+
+        for (var i=0; i<x.busy_date.length; i++){
+          console.log(moment(x.busy_date[i]).format('YYYY-MM-DD') + ' ' + this.pickDate);
+          // console.log(x.busy_date[i] + ' ' + this.pickDate);
+          if (moment(x.busy_date[i]).format('YYYY-MM-DD') === this.pickDate){
+            return false;
+          }
+
+        }
+        return true;
+      });
+    }
+    this.countResults = this.stylistDetails.length;
   }
 
   onSelect1(val) {
-    // console.log(val)
-    this.stylistDetails = this.OriginalDetails.filter(x => {
+    this.a = true;
+    this.stylistDetails = this.OriginalDetails;
+    // console.log(val);
+    // console.log(this.OriginalDetails);
+    // this.stylistDetails = this.OriginalDetails.filter(x => {
+    //   // console.log(x.address_line_1);
+    //   return x.address_line_1 === val;
+    // });
+    // this.countResults = this.stylistDetails.length;
+  }
 
-      for (var i=0; i<x.skill.length; i++){
-        // console.log(x.skill[i] + ' ' + val);
-        if (x.skill[i] === val){
-          return x.skill[i] === val;
-        }
-      }
-    });
-    this.countResults = this.stylistDetails.length;
+  onSelect2(val) {
+    this.b = true;
+    this.stylistDetails = this.OriginalDetails;
+
+    // console.log(val)
+    // this.stylistDetails = this.OriginalDetails.filter(x => {
+    //
+    //   for (var i=0; i<x.skill.length; i++){
+    //     // console.log(x.skill[i] + ' ' + val);
+    //     if (x.skill[i] === val){
+    //       return x.skill[i] === val;
+    //     }
+    //   }
+    // });
+    // // this.stylistDetails2 = this.stylistDetails;
+    // this.countResults = this.stylistDetails.length;
   }
 
   onInputChange1(event: any) {
@@ -54,30 +144,29 @@ export class SearchResultsComponent implements OnInit {
     this.sliderValue2 = event.value;
   }
 
-  onSelect2(val) {
-    // console.log(val);
-    // console.log(this.OriginalDetails);
-    this.stylistDetails = this.OriginalDetails.filter(x => {
-      // console.log(x.address_line_1);
-      return x.address_line_1 === val;
-    });
-    this.countResults = this.stylistDetails.length;
-  }
+
 
   onSelect3(val){
+    this.c = true;
+    this.stylistDetails = this.OriginalDetails;
+
+
     // console.log(val);
-    this.stylistDetails = this.OriginalDetails.filter(x => {
-      return x.mrng_cost < val;
-    })
-    this.countResults = this.stylistDetails.length;
+    // this.stylistDetails = this.OriginalDetails.filter(x => {
+    //   return x.mrng_cost < val;
+    // })
+    // this.countResults = this.stylistDetails.length;
   }
 
   onSelect4(val){
+    this.d = true;
+    this.stylistDetails = this.OriginalDetails;
+
     // console.log(val);
-    this.stylistDetails = this.OriginalDetails.filter(x => {
-      return x.evng_cost < val;
-    })
-    this.countResults = this.stylistDetails.length;
+    // this.stylistDetails = this.OriginalDetails.filter(x => {
+    //   return x.evng_cost < val;
+    // })
+    // this.countResults = this.stylistDetails.length;
   }
 
   change(){
@@ -86,20 +175,23 @@ export class SearchResultsComponent implements OnInit {
   }
 
   onPickDate(val){
-      this.pickDate = moment(val).format('YYYY-MM-DD');
-    this.stylistDetails = this.OriginalDetails.filter(x => {
+    this.e =true;
+    this.stylistDetails = this.OriginalDetails;
 
-      for (var i=0; i<x.busy_date.length; i++){
-        console.log(moment(x.busy_date[i]).format('YYYY-MM-DD') + ' ' + this.pickDate);
-        // console.log(x.busy_date[i] + ' ' + this.pickDate);
-        if (moment(x.busy_date[i]).format('YYYY-MM-DD') === this.pickDate){
-          return false;
-        }
-
-      }
-      return true;
-    });
-    this.countResults = this.stylistDetails.length;
+    this.pickDate = moment(val).format('YYYY-MM-DD');
+    // this.stylistDetails = this.OriginalDetails.filter(x => {
+    //
+    //   for (var i=0; i<x.busy_date.length; i++){
+    //     console.log(moment(x.busy_date[i]).format('YYYY-MM-DD') + ' ' + this.pickDate);
+    //     // console.log(x.busy_date[i] + ' ' + this.pickDate);
+    //     if (moment(x.busy_date[i]).format('YYYY-MM-DD') === this.pickDate){
+    //       return false;
+    //     }
+    //
+    //   }
+    //   return true;
+    // });
+    // this.countResults = this.stylistDetails.length;
   }
 
   constructor(private  route: ActivatedRoute, private http: HttpClient) {
