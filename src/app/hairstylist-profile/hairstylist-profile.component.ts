@@ -23,6 +23,7 @@ export class HairstylistProfileComponent implements OnInit {
   address;
   telephone;
   skills = [];
+  type;
   busy_dates = [];
 
   // profileDetails = [];
@@ -47,6 +48,7 @@ export class HairstylistProfileComponent implements OnInit {
           this.telephone = data[0].telephone;
           this.skills = data[0].skill;
           this.telephone = data[0].telephone;
+          this.type = data[0].type;
           console.log(this.skills);
         }
       );

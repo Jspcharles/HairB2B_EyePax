@@ -13,10 +13,8 @@ import * as moment from 'moment';
 
 export class SearchResultsComponent implements OnInit {
   stylistDetails = [];
-
   OriginalDetails = [];
   type;
-  showMessage;
   id;
   location;
   skill;
@@ -31,9 +29,11 @@ export class SearchResultsComponent implements OnInit {
   c: boolean = false;
   d: boolean = false;
   e: boolean = false;
+  f: boolean = false;
 
   selected1;
   selected2;
+  selected3;
   sliderValue1;
   sliderValue2;
 
@@ -47,8 +47,10 @@ export class SearchResultsComponent implements OnInit {
     this.c = false;
     this.d = false;
     this.e = false;
+    this.f = false;
     this.selected1 = "";
     this.selected2 = "";
+    this.selected3 = "";
   }
 
   filterAll(){
@@ -58,6 +60,10 @@ export class SearchResultsComponent implements OnInit {
 
     if (this.selected2 === ""){
       this.b = false;
+    }
+
+    if (this.selected3 === ""){
+      this.f = false;
     }
 
     if (this.a === true){
@@ -103,6 +109,13 @@ export class SearchResultsComponent implements OnInit {
         return true;
       });
     }
+
+    if (this.f === true){
+      this.stylistDetails = this.stylistDetails.filter(x => {
+        return x.type === this.selected3;
+      })
+    }
+
     this.countResults = this.stylistDetails.length;
   }
 
@@ -167,6 +180,11 @@ export class SearchResultsComponent implements OnInit {
     //   return x.evng_cost < val;
     // })
     // this.countResults = this.stylistDetails.length;
+  }
+
+  onSelect5(){
+    this.f = true;
+    this.stylistDetails = this.OriginalDetails;
   }
 
   change(){
@@ -269,15 +287,5 @@ export class SearchResultsComponent implements OnInit {
         );
       }
     });
-
-
-    // if (this.route.queryParams == this.name){
-    //   return false;
-    // }
-  }
-
-  onFiltered(message: string): void {
-    this.showMessage = message;
-    // console.log('Charles' + this.showMessage);
   }
 }

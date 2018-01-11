@@ -5,18 +5,33 @@
 
     <div class="container-fluid">
       <div class="d-flex pr-hero-black-holder">
-          <!--<div class="" style="padding-left: 10px">-->
-            <!--<label class="filter-col" style="margin-right:0;" for="pref-perpage">I need a</label>-->
-            <!--<select id="pref-perpage" class="form-control">-->
-              <!--<option value="Educator" selected>Educator</option>-->
-              <!--<option value="Stylist/Colourist">Stylist/Colourist</option>-->
-              <!--<option value="Assistant">Assistant</option>-->
-            <!--</select>-->
-          <!--</div> &lt;!&ndash; form group [rows] &ndash;&gt;-->
+          <div class="sliderWidth">
+            <div class="" style="padding-left: 10px">
+              <label class="filter-col" style="margin-right:0;">Job type</label>
+              <select class="form-control" [(ngModel)]="selected3" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect5(selected3) ; filterAll()">
+                <option value="" selected>--All--</option>
+                <option value="Educator">Educator</option>
+                <option value="Hairstylist">Hairstylist</option>
+                <option value="Assistant">Assistant</option>
+              </select>
+            </div>
+
+            <div class="" style="padding-left: 10px">
+              <label class="filter-col" style="margin-right:0;">Skills Required</label>
+              <select class="form-control" [(ngModel)]="selected2" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect2(selected2) ; filterAll()">
+                <option value="" selected>--All--</option>
+                <option value="Advanced colouring">Advanced colouring</option>
+                <option value="Colour correction">Colour correction</option>
+                <option value="Hair painting">Hair painting</option>
+                <option value="Bridal">Bridal</option>
+              </select>
+            </div>
+          </div>
+
           <div class="sliderWidth">
             <div class="" style="padding-left: 10px">
               <label class="filter-col" style="margin-right:0;">Job location</label>
-              <select id="pref-perpage-2" class="form-control" [(ngModel)]="selected1" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect1(selected1) ; filterAll()">
+              <select class="form-control" [(ngModel)]="selected1" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect1(selected1) ; filterAll()">
                 <option value="" selected>--All--</option>
                 <option value="Sydney">Sydney</option>
                 <option value="Melbourne">Melbourne</option>
@@ -27,17 +42,7 @@
                 <option value="Newcastle">Newcastle</option>
                 <option value="Canberra">Canberra</option>
               </select>
-            </div><!-- form group [search] -->
-            <div class="" style="padding-left: 10px">
-              <label class="filter-col" style="margin-right:0;">Skills Required</label>
-              <select id="pref-perpage-3" class="form-control" [(ngModel)]="selected2" [ngModelOptions]="{standalone:true}" (ngModelChange)="onSelect2(selected2) ; filterAll()">
-                <option value="" selected>--All--</option>
-                <option value="Advanced colouring">Advanced colouring</option>
-                <option value="Colour correction">Colour correction</option>
-                <option value="Hair painting">Hair painting</option>
-                <option value="Bridal">Bridal</option>
-              </select>
-            </div> <!-- form group [order by] -->
+            </div>
           </div>
 
           <div class="sliderWidth">
@@ -48,7 +53,6 @@
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
-
             </div>
           </div>
 
@@ -88,6 +92,7 @@
       </div>
       <div class="col-xs-12 col-sm-12 col-md-2">
         <ul class="meta-search" style="font-size: 20px">
+          <li><label>{{list.type}}</label></li>
           <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.mrng_cost}}</span><span> (Morning)</span></li>
           <li><i class="glyphicon glyphicon-usd"></i> <span> {{list.evng_cost}}</span><span> (Evening)</span></li>
           <li><i class="glyphicon glyphicon-home"></i><span>  {{list.address_line_1}}</span></li>
