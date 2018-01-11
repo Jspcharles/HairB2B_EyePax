@@ -42,6 +42,7 @@ export class SearchResultsComponent implements OnInit {
   onSelect(){
     this.stylistDetails = this.OriginalDetails;
     this.countResults = this.stylistDetails.length;
+    this.pickDate = "";
     this.a = false;
     this.b = false;
     this.c = false;
